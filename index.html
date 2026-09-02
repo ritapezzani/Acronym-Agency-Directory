@@ -103,7 +103,7 @@
             border-radius: 6px;
             overflow: hidden;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            margin-bottom: 40px;
+            margin-bottom: 20px;
         }
         th, td {
             padding: 12px 15px;
@@ -119,6 +119,67 @@
             background-color: #f1f1f1;
         }
         
+        /* Expandable Phase Section Styling */
+        .phase-section {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            overflow: hidden;
+        }
+        .phase-header {
+            background-color: #1e3a8a;
+            color: white;
+            padding: 14px 20px;
+            font-size: 11.5pt;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            transition: background-color 0.2s;
+        }
+        .phase-header:hover {
+            background-color: #1d4ed8;
+        }
+        .phase-header::after {
+            content: '\25BC';
+            font-size: 10pt;
+            transition: transform 0.3s;
+        }
+        .phase-section.collapsed .phase-header::after {
+            transform: rotate(-90deg);
+        }
+        .phase-content {
+            max-height: 3000px;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out;
+        }
+        .phase-section.collapsed .phase-content {
+            max-height: 0;
+        }
+        .phase-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 0;
+            box-shadow: none;
+            border-radius: 0;
+        }
+        .phase-table th {
+            background-color: #f1f5f9;
+            color: #334155;
+            font-size: 9.5pt;
+            border-bottom: 2px solid #cbd5e1;
+            padding: 10px 15px;
+        }
+        .phase-table td {
+            font-size: 10pt;
+            padding: 12px 15px;
+        }
+
         /* Guide Content Styles */
         .guide-body {
             font-size: 10pt;
@@ -280,7 +341,7 @@
         <div id="cemTasksSubTab" class="cem-sub-content" style="display: none;">
             <div class="header-banner">
                 <h2>Milestone Tracker: Guidelines & Task Index</h2>
-                <p>Framework for tracking, editing rules, logic alerts, and searchable reference list of individual tasks.</p>
+                <p>Framework for tracking, editing rules, logic alerts, life-cycle breakdown, roadblocks matrix, escalation flow, and searchable reference list of individual tasks.</p>
             </div>
 
             <h2>Mastering the Milestone Tracker</h2>
@@ -316,46 +377,217 @@
                 </ul>
             </div>
 
-            <h2>Task Names, Identifiers & Descriptions</h2>
-            <input type="text" id="taskSearchBox" class="searchBox" placeholder="Type to search task numbers or descriptions..." onkeyup="filterTaskTable()">
+            <h2>Phase-by-Phase Lifecycle Roadmap</h2>
+            <div class="card">
+                <p style="margin-top: 0;">Breakdown of the overarching lifecycle to help CEMs guide agencies through key transition phases:</p>
+                <ul>
+                    <li><strong>Phase 1: Pre-Transition Planning:</strong> Stakeholder alignment, budget validation, confirming the agency champion, and kicking off As-Is / To-Be gap analyses.</li>
+                    <li><strong>Phase 2: Transition Execution:</strong> MSP kickoff meetings, data mapping, Financial Management (FM) and Single Sign-On (SSO) integration builds, Pre-SIT testing, and user profile loading.</li>
+                    <li><strong>Phase 3: Deployments:</strong> Training rollout, final production data loads, TMC setup, and go-live day support.</li>
+                    <li><strong>Phase 4: ETS Close-Out:</strong> Extracting final historical archives from the legacy system, reconciling Travel Management Company (TMC) accounts, and shutting down old billing lines.</li>
+                </ul>
+            </div>
 
-            <table id="taskTable">
-                <thead>
-                    <tr>
-                        <th style="width: 15%;">Task ID</th>
-                        <th style="width: 30%;">Task Name</th>
-                        <th style="width: 55%;">Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td><strong>1.1.2</strong></td><td>Validate GO.gov transition budget</td><td>Planning and confirming the funding required to move from the current ETS2 system to GO.gov.</td></tr>
-                    <tr><td><strong>1.1.3</strong></td><td>Validate agency sponsor</td><td>Confirming who the high-level executive leader (the "Champion") will be to drive support for the transition.</td></tr>
-                    <tr><td><strong>1.1.4</strong></td><td>Validate agency transition team members</td><td>Ensuring you have the right working-level people assigned and that GSA has the most current contact list.</td></tr>
-                    <tr><td><strong>1.1.7</strong></td><td>Share initial project plan</td><td>Getting the roadmap approved and synced with the GSA Project Management Office (PMO).</td></tr>
-                    <tr><td><strong>1.2.3</strong></td><td>Conduct As-Is / To Be Gap Analysis</td><td>Mapping current internal processes against the new GO.gov workflows to identify what needs to change.</td></tr>
-                    <tr><td><strong>1.3.4</strong></td><td>Review agency's current data transactions</td><td>Auditing financial/travel data to confirm exactly what needs to migrate to GO.gov.</td></tr>
-                    <tr><td><strong>1.3.5</strong></td><td>Identify and document gaps (FM/Interfaces)</td><td>Comparing current financial system specifications against GO.gov functionality to scope required custom work.</td></tr>
-                    <tr><td><strong>1.3.7</strong></td><td>Finalize project plan for FM integration</td><td>Solidifying the technical timeline for integrating your financial management systems.</td></tr>
-                    <tr><td><strong>1.5.1</strong></td><td>Review Change Management & Training Plan</td><td>Checking the communication and learning strategy for the agency.</td></tr>
-                    <tr><td><strong>1.5.5</strong></td><td>Identify Change Champions</td><td>Selecting and organizing internal advocates who will help staff adapt to the new system.</td></tr>
-                    <tr><td><strong>1.5.6.1</strong></td><td>Respond to training needs analysis</td><td>Providing feedback on what specific training modules your agency employees require.</td></tr>
-                    <tr><td><strong>1.6.1</strong></td><td>Review MSP Customer Support Plan</td><td>Understanding how the Tier 1 support (help desk) will function for your users.</td></tr>
-                    <tr><td><strong>1.7.1</strong></td><td>Designate security lead/ISSO</td><td>Assigning the primary point of contact responsible for system security.</td></tr>
-                    <tr><td><strong>1.8.2</strong></td><td>Coordinate agency ATO/ATU timeline</td><td>Syncing your agency's security authorization schedule with the GSA FedRAMP/PMO timeline.</td></tr>
-                    <tr><td><strong>1.8.4</strong></td><td>Review CRM (Control Requirements Matrix)</td><td>Verifying the security control requirements defined in the FedRAMP package.</td></tr>
-                    <tr><td><strong>1.8.7</strong></td><td>Obtain agency authorization (ATO/ATU)</td><td>The final security sign-off required before data can migrate to GO.gov.</td></tr>
-                    <tr><td><strong>1.8.8</strong></td><td>Obtain GSA ISA template</td><td>Setting up the Interconnection Security Agreement (ISA) between your agency and GSA.</td></tr>
-                    <tr><td><strong>1.8.9</strong></td><td>Provide signed CRM ATO/ATU letter</td><td>Delivering official proof of your security authorization to the GSA team.</td></tr>
-                    <tr><td><strong>2.1.1</strong></td><td>Complete kickoff/orientation meeting</td><td>The formal "handshake" with the Managed Service Provider (MSP) to walk through configuration. (Phase 2: Transition Execution - Active preparation and kickoff).</td></tr>
-                    <tr><td><strong>3.3.5</strong></td><td>Validate loaded employee profiles</td><td>Checking that user data (names, roles, permissions) migrated successfully. (Phase 3: Deployments & Go-Live - Technical cutover and final validation).</td></tr>
-                    <tr><td><strong>3.3.6</strong></td><td>Execute FM Integration interface</td><td>Running the actual production data load for your financial systems. (Phase 3: Deployments & Go-Live).</td></tr>
-                    <tr><td><strong>3.3.8</strong></td><td>Enable SSO integration</td><td>Connecting your agency's Single Sign-On (SSO) to the production environment so users can log in. (Phase 3: Deployments & Go-Live).</td></tr>
-                    <tr><td><strong>4.1.1</strong></td><td>Request ETS2 vendor transition out plan</td><td>Getting the formal strategy from the outgoing vendor on how they will shut down. (Phase 4: ETS Close-Out - Safely shutting down the legacy system).</td></tr>
-                    <tr><td><strong>4.1.2</strong></td><td>Finalize data transition out checklist</td><td>Creating the plan to extract and secure historical data from the old system. (Phase 4: ETS Close-Out).</td></tr>
-                    <tr><td><strong>4.1.7</strong></td><td>Capture final archive</td><td>Ensuring all required records are saved and communicating that receipt to GSA. (Phase 4: ETS Close-Out).</td></tr>
-                    <tr><td><strong>4.2.3</strong></td><td>Confirm TMC vendor reconciled accounts</td><td>Verifying all financial disputes and account balances from the old travel management company are settled before formally closing the books. (Phase 4: ETS Close-Out).</td></tr>
-                </tbody>
-            </table>
+            <h2>Common Roadblocks & Mitigation Matrix</h2>
+            <div class="card">
+                <p style="margin-top: 0;">Quick-reference guide for navigating common agency bottlenecks:</p>
+                <ul>
+                    <li><strong>Roadblock: Agency security team delayed on ATO/ATU package.</strong><br><em>Mitigation:</em> Escalate early through the GSA security lead, verify CRM matches the FedRAMP package, and promptly request the Interconnection Security Agreement (ISA) template.</li>
+                    <li><strong>Roadblock: Financial Management (FM) interface custom mapping failing.</strong><br><em>Mitigation:</em> Reference latest ConcurGov/E2 crosswalks on Connect.gov and schedule an immediate technical sync with the MSP team.</li>
+                    <li><strong>Roadblock: Low user engagement or resistance to change.</strong><br><em>Mitigation:</em> Lean on internal Change Champions and deploy targeted training modules based on the needs analysis.</li>
+                </ul>
+            </div>
+
+            <h2>Status Definitions</h2>
+            <div class="card">
+                <div class="sub-box" style="background: #ffffff; border: 1px solid #cbd5e1; margin-bottom: 0;">
+                    <ul style="margin: 0;">
+                        <li><strong>On Track (Green):</strong> Meeting all scheduled timelines with no active blockers.</li>
+                        <li><strong>Behind (Yellow):</strong> Minor delay with a clear recovery plan documented in Column H.</li>
+                        <li><strong>Significantly Behind (Red):</strong> Major blocker threatening the go-live window requiring GSA PMO intervention.</li>
+                        <li><strong>Complete (Blue/Grey):</strong> Task fully executed and validated.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>Escalation & Contact Routing Flow</h2>
+            <div class="card">
+                <p style="margin-top: 0;">Know precisely who to contact when issues arise:</p>
+                <ul>
+                    <li><strong>Contractual & Commercial Issues:</strong> Route through Censeo (Prime Contractor).</li>
+                    <li><strong>Governance, Transition, & T&E Subcontractor Questions:</strong> Direct to Kisha and Baylee.</li>
+                    <li><strong>Security & Compliance Documentation Access:</strong> Email CEM leads and cc <code>gogov@gsa.gov</code> (requires active NDA).</li>
+                    <li><strong>TMC Transition Support:</strong> Coordinate independently with GoldSpring.</li>
+                </ul>
+            </div>
+
+            <h2>Task Names, Identifiers & Descriptions</h2>
+            <input type="text" id="taskSearchBox" class="searchBox" placeholder="Type to search task numbers, task names, or descriptions..." onkeyup="filterTaskTables()">
+
+            <!-- Phase 1 Section -->
+            <div class="phase-section" data-phase="1 Pre-Transition Planning">
+                <div class="phase-header" onclick="togglePhase(this)">1 Pre-Transition Planning</div>
+                <div class="phase-content">
+                    <table class="phase-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 15%;">Task ID</th>
+                                <th style="width: 35%;">Task Name</th>
+                                <th style="width: 50%;">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>1.1</strong></td><td>Initiation</td><td>Initial planning, alignment, budget, and project setup activities.</td></tr>
+                            <tr><td><strong>1.1.2</strong></td><td>Validate GO.gov transition budget</td><td>Budget required to transition from ETS2 to GO.gov</td></tr>
+                            <tr><td><strong>1.1.3</strong></td><td>Validate agency sponsor to be executive champion for GO.gov</td><td>Validate agency sponsor to be executive champion for GO.gov</td></tr>
+                            <tr><td><strong>1.1.4</strong></td><td>Validate agency transition team members and share refreshed contact list back with GSA</td><td>Validate agency transition team members and share refreshed contact list back with GSA</td></tr>
+                            <tr><td><strong>1.1.7</strong></td><td>Share initial project plan with GO.gov PMO</td><td>Share initial project plan with GO.gov PMO</td></tr>
+                            <tr><td><strong>1.2</strong></td><td>T&E Process Planning</td><td>Travel and Expense process planning and gap analysis activities.</td></tr>
+                            <tr><td><strong>1.2.3</strong></td><td>Conduct As-Is /To-Be Gap Analysis between agency processes and changes with GO.gov</td><td>Conduct As-Is /To-Be Gap Analysis between agency processes and changes with GO.gov</td></tr>
+                            <tr><td><strong>1.3</strong></td><td>FM Integration Planning</td><td>Financial Management integration approach and interface planning.</td></tr>
+                            <tr><td><strong>1.3.3</strong></td><td>Determine API or SFTP interface approach and communicate decision to GSA</td><td>Determine API or SFTP interface approach and communicate decision to GSA</td></tr>
+                            <tr><td><strong>1.3.4</strong></td><td>Review agency's current data transactions. Confirm if these transactions are all in scope for GO.gov</td><td>Review agency's current data transactions. Confirm if these transactions are all in scope for GO.gov</td></tr>
+                            <tr><td><strong>1.3.5</strong></td><td>Identify and document gaps from FM specs and IOC functionality to current interfaces</td><td>Identify and document gaps from FM specs and IOC functionality to current interfaces</td></tr>
+                            <tr><td><strong>1.3.7</strong></td><td>Finalize project plan for FM integration development with FOC-A functionality starting with draft specifications and share back with GSA</td><td>Finalize project plan for FM integration development with FOC-A functionality starting with draft specifications and share back with GSA</td></tr>
+                            <tr><td><strong>1.4</strong></td><td>Assisted Acquisition - TMC Planning</td><td>Assisted acquisition and Travel Management Company planning.</td></tr>
+                            <tr><td><strong>1.5</strong></td><td>Organizational Change Management / Training</td><td>Organizational change management planning and training coordination.</td></tr>
+                            <tr><td><strong>1.5.1</strong></td><td>Review the change management and training plan</td><td>Review the change management and training plan</td></tr>
+                            <tr><td><strong>1.5.5</strong></td><td>Identify list of Change Champions and set up network / meetings</td><td>Identify list of Change Champions and set up network / meetings</td></tr>
+                            <tr><td><strong>1.5.6</strong></td><td>Training Planning</td><td>Training planning and questionnaire responses.</td></tr>
+                            <tr><td><strong>1.5.6.1</strong></td><td>Respond to training needs analysis questionnaire</td><td>Respond to training needs analysis questionnaire</td></tr>
+                            <tr><td><strong>1.6</strong></td><td>System Administration, Reporting, and Service Desk Process Planning</td><td>Planning for system administration, reporting, and Tier 1 support.</td></tr>
+                            <tr><td><strong>1.6.1</strong></td><td>Review MSP Customer Support Plan and prepare for MSP Tier 1 services</td><td>Review MSP Customer Support Plan and prepare for MSP Tier 1 services</td></tr>
+                            <tr><td><strong>1.7</strong></td><td>Security Planning</td><td>Security lead designation and compliance preparations.</td></tr>
+                            <tr><td><strong>1.7.1</strong></td><td>Designate security lead and team members (e.g. ISSO) and sign NDA for access to Connect.gov security page</td><td>Designate security lead and team members (e.g. ISSO) and sign NDA for access to Connect.gov security page</td></tr>
+                            <tr><td><strong>1.8</strong></td><td>ATO/ATU Considerations (FedRAMP)</td><td>FedRAMP ATO and ATU authorization planning and documentation.</td></tr>
+                            <tr><td><strong>1.8.2</strong></td><td>Coordinate agency ATO/ATU timeline relative to GO.gov PMO FedRAMP ATO timeline</td><td>Coordinate agency ATO/ATU timeline relative to GO.gov PMO FedRAMP ATO timeline</td></tr>
+                            <tr><td><strong>1.8.4</strong></td><td>Review CRM defined in FedRAMP packages and prepare CRM SSP (to include a Privacy Impact Assessment PIA)</td><td>Review CRM defined in FedRAMP packages and prepare CRM SSP (to include a Privacy Impact Assessment PIA)</td></tr>
+                            <tr><td><strong>1.8.7</strong></td><td>Issue TMC Security Authorization following one of three options 1) inherit the GSA MFR in alignment with OMB A-130, 2) issue an ATU for customer responsible controls, 3)</td><td>Issue TMC Security Authorization following one of three options 1) inherit the GSA MFR in alignment with OMB A-130, 2) issue an ATU for customer responsible controls, 3)</td></tr>
+                            <tr><td><strong>1.8.8</strong></td><td>Provide a completed draft copy of the Interconnection Security Agreement (ISA) or Information Exchange Agreement (IEA) to the GO.gov team to review. Address comments,</td><td>Provide a completed draft copy of the Interconnection Security Agreement (ISA) or Information Exchange Agreement (IEA) to the GO.gov team to review. Address comments,</td></tr>
+                            <tr><td><strong>1.8.8.1</strong></td><td>Complete and sign Interconnection Security Agreement (ISA) or Information Exchange Agreement (IEA) addressing customer connectivity to GO.gov</td><td>Complete and sign Interconnection Security Agreement (ISA) or Information Exchange Agreement (IEA) addressing customer connectivity to GO.gov</td></tr>
+                            <tr><td><strong>1.8.9</strong></td><td>Provide a signed copy of agency's CRM ATO / ATU letter for implementation of GO.gov to the GO.gov team</td><td>Provide a signed copy of agency's CRM ATO / ATU letter for implementation of GO.gov to the GO.gov team</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Phase 2 Section -->
+            <div class="phase-section" data-phase="2 Transition Execution">
+                <div class="phase-header" onclick="togglePhase(this)">2 Transition Execution</div>
+                <div class="phase-content">
+                    <table class="phase-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 15%;">Task ID</th>
+                                <th style="width: 35%;">Task Name</th>
+                                <th style="width: 50%;">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>2.1</strong></td><td>Transition Execution Kick-off</td><td>Kickoff meetings and agency transition plan reviews.</td></tr>
+                            <tr><td><strong>2.1.1</strong></td><td>Complete kickoff / orientation meeting with MSP (i.e., configuration walkthrough)</td><td>Complete kickoff / orientation meeting with MSP (i.e., configuration walkthrough)</td></tr>
+                            <tr><td><strong>2.1.3</strong></td><td>Review Agency Transition Plan (AT-3) with GO.gov team ahead of GSA accepting for agencies</td><td>Review Agency Transition Plan (AT-3) with GO.gov team ahead of GSA accepting for agencies</td></tr>
+                            <tr><td><strong>2.2</strong></td><td>Agency Configuration</td><td>Making agency selections in the configuration workbook.</td></tr>
+                            <tr><td><strong>2.2.1</strong></td><td>Review GO.gov configuration guides and solution documentation, and make agency selections in the configuration workbook (incorporate TMC as needed)</td><td>Review GO.gov configuration guides and solution documentation, and make agency selections in the configuration workbook (incorporate TMC as needed)</td></tr>
+                            <tr><td><strong>2.3.1</strong></td><td>FM Integration Build</td><td>Financial Management integration configuration and interface development.</td></tr>
+                            <tr><td><strong>2.3.1.2</strong></td><td>Select minimal FM integration configurations and share with GSA (LOAs, workflow items, funds validation)</td><td>Select minimal FM integration configurations and share with GSA (LOAs, workflow items, funds validation)</td></tr>
+                            <tr><td><strong>2.3.1.3</strong></td><td>Develop agency FM interface to GO.gov</td><td>Develop agency FM interface to GO.gov</td></tr>
+                            <tr><td><strong>2.4</strong></td><td>Pre-Testing Readiness and Validation</td><td>Preparing test data, whitelisting, certificates, and pre-SIT surveys.</td></tr>
+                            <tr><td><strong>2.4.1</strong></td><td>Identify SIT and UAT testers and provide list to GO.gov</td><td>Identify SIT and UAT testers and provide list to GO.gov</td></tr>
+                            <tr><td><strong>2.4.2</strong></td><td>Complete the FM system integration development (FM build)</td><td>Complete the FM system integration development (FM build)</td></tr>
+                            <tr><td><strong>2.4.3</strong></td><td>Provide test data in GO.gov specified file formats based on agency configuration workbook selections (to include test employee, LOA, and organizational structure data. Also</td><td>Provide test data in GO.gov specified file formats based on agency configuration workbook selections (to include test employee, LOA, and organizational structure data. Also</td></tr>
+                            <tr><td><strong>2.4.4</strong></td><td>Respond to GO.gov questions / corrections required to test data as needed based on GO.gov team review (Note: This may be an optional step)</td><td>Respond to GO.gov questions / corrections required to test data as needed based on GO.gov team review (Note: This may be an optional step)</td></tr>
+                            <tr><td><strong>2.4.5</strong></td><td>Complete advanced role assignment workbook via self service portal (ServiceNow) - after completing the data workbooks in 2.4.3</td><td>Complete advanced role assignment workbook via self service portal (ServiceNow) - after completing the data workbooks in 2.4.3</td></tr>
+                            <tr><td><strong>2.4.7</strong></td><td>Develop additional test cases for critical agency functions that will apply to both SIT and UAT and share with GO.gov team</td><td>Develop additional test cases for critical agency functions that will apply to both SIT and UAT and share with GO.gov team</td></tr>
+                            <tr><td><strong>2.4.8</strong></td><td>Respond and complete Pre-SIT connectivity survey provided by GO.gov team. (See transition kick off materials for more information)</td><td>Respond and complete Pre-SIT connectivity survey provided by GO.gov team. (See transition kick off materials for more information)</td></tr>
+                            <tr><td><strong>2.4.9</strong></td><td>Provide IP address to GO.gov team to configure whitelisting</td><td>Provide IP address to GO.gov team to configure whitelisting</td></tr>
+                            <tr><td><strong>2.4.10</strong></td><td>Confirm GO.gov URL whitelisting is completed</td><td>Confirm GO.gov URL whitelisting is completed</td></tr>
+                            <tr><td><strong>2.4.11</strong></td><td>Exchange certificates (both inbound and outbound) for FM interface connectivity with GO.gov team, ensuring that the both are PKI compliant</td><td>Exchange certificates (both inbound and outbound) for FM interface connectivity with GO.gov team, ensuring that the both are PKI compliant</td></tr>
+                            <tr><td><strong>2.4.12</strong></td><td>Complete the Pre-SIT Identity Provider (IdP) survey provided by GO.gov team, ensuring that your IdP/SSO is SAML or OIDC 2.0 compliant</td><td>Complete the Pre-SIT Identity Provider (IdP) survey provided by GO.gov team, ensuring that your IdP/SSO is SAML or OIDC 2.0 compliant</td></tr>
+                            <tr><td><strong>2.4.13</strong></td><td>Agency meets with GO.gov team to test IdP setup and connection with GO.gov</td><td>Agency meets with GO.gov team to test IdP setup and connection with GO.gov</td></tr>
+                            <tr><td><strong>2.4.14</strong></td><td>Agency successfully establish GO.gov SFTP connectivity for testing data loads with GO.gov team</td><td>Agency successfully establish GO.gov SFTP connectivity for testing data loads with GO.gov team</td></tr>
+                            <tr><td><strong>2.4.15</strong></td><td>Agency successfully establish GO.gov SFTP or API connectivity for FM integration with GO.gov team</td><td>Agency successfully establish GO.gov SFTP or API connectivity for FM integration with GO.gov team</td></tr>
+                            <tr><td><strong>2.4.16</strong></td><td>Pre-SIT FM connectivity testing and validation successfully complete</td><td>Pre-SIT FM connectivity testing and validation successfully complete</td></tr>
+                            <tr><td><strong>2.4.17</strong></td><td>Participate in SIT orientation part one to review the data load template, test script list and details on SFTP process</td><td>Participate in SIT orientation part one to review the data load template, test script list and details on SFTP process</td></tr>
+                            <tr><td><strong>2.5</strong></td><td>SIT - FM Integration Testing</td><td>System Integration Testing execution and defect resolution.</td></tr>
+                            <tr><td><strong>2.5.2</strong></td><td>Complete system integration testing (SIT), including defect resolution</td><td>Complete system integration testing (SIT), including defect resolution</td></tr>
+                            <tr><td><strong>2.6</strong></td><td>UAT - FM Integration Testing</td><td>User Acceptance Testing execution and tester identification.</td></tr>
+                            <tr><td><strong>2.6.0</strong></td><td>Optionally: Identify UAT testers and provide list to GO.gov</td><td>Optionally: Identify UAT testers and provide list to GO.gov</td></tr>
+                            <tr><td><strong>2.6.1</strong></td><td>Complete user acceptance testing (UAT), including defect resolution</td><td>Complete user acceptance testing (UAT), including defect resolution</td></tr>
+                            <tr><td><strong>2.7</strong></td><td>SmartPay Integration</td><td>SmartPay integration, employee IDs, and CBA credit card accounts.</td></tr>
+                            <tr><td><strong>2.7.1</strong></td><td>Discuss SmartPay integration with GO.gov team and transition team members</td><td>Discuss SmartPay integration with GO.gov team and transition team members</td></tr>
+                            <tr><td><strong>2.7.5</strong></td><td>Update employee ID with SmartPay bank to ensure all card accounts are assigned the GO.gov unique employee number</td><td>Update employee ID with SmartPay bank to ensure all card accounts are assigned the GO.gov unique employee number</td></tr>
+                            <tr><td><strong>2.7.10</strong></td><td>Request (and receive) new CBA credit card accounts</td><td>Request (and receive) new CBA credit card accounts</td></tr>
+                            <tr><td><strong>2.7.11</strong></td><td>Initiate data feed(s) for go-live</td><td>Initiate data feed(s) for go-live</td></tr>
+                            <tr><td><strong>2.8</strong></td><td>Reporting</td><td>Reporting requirements and transition planning from ETS2.</td></tr>
+                            <tr><td><strong>2.8.3</strong></td><td>Provide requirements for the [up to 5] unique reports that would be created for the agency prior to Go-Live if there are requirements beyond the standard reports</td><td>Provide requirements for the [up to 5] unique reports that would be created for the agency prior to Go-Live if there are requirements beyond the standard reports</td></tr>
+                            <tr><td><strong>2.8.4</strong></td><td>Set a plan for transitioning reporting from ETS2 to GO.gov (reschedule reports on new platform)</td><td>Set a plan for transitioning reporting from ETS2 to GO.gov (reschedule reports on new platform)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Phase 3 Section -->
+            <div class="phase-section" data-phase="3 Deployments">
+                <div class="phase-header" onclick="togglePhase(this)">3 Deployments</div>
+                <div class="phase-content">
+                    <table class="phase-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 15%;">Task ID</th>
+                                <th style="width: 35%;">Task Name</th>
+                                <th style="width: 50%;">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>3.1</strong></td><td>Change Management & Training</td><td>Executing training rollouts, trainer identification, and communications.</td></tr>
+                            <tr><td><strong>3.1.2</strong></td><td>Develop / finalize agency training rollout plan and begin executing where possible ahead of go-live</td><td>Develop / finalize agency training rollout plan and begin executing where possible ahead of go-live</td></tr>
+                            <tr><td><strong>3.1.5</strong></td><td>Agency to ID their Trainers & Provide to GO.gov team (if applicable for your agency)</td><td>Agency to ID their Trainers & Provide to GO.gov team (if applicable for your agency)</td></tr>
+                            <tr><td><strong>3.1.7</strong></td><td>Submit initial agency service desk knowledge base content to GO.gov team</td><td>Submit initial agency service desk knowledge base content to GO.gov team</td></tr>
+                            <tr><td><strong>3.1.9</strong></td><td>Conduct user training optionally including agency-specific trainings (if applicable for your agency)</td><td>Conduct user training optionally including agency-specific trainings (if applicable for your agency)</td></tr>
+                            <tr><td><strong>3.1.10</strong></td><td>Send go-live and post go-live communications</td><td>Send go-live and post go-live communications</td></tr>
+                            <tr><td><strong>3.2</strong></td><td>TMC Onboarding</td><td>Travel Management Company setup and onboarding completion.</td></tr>
+                            <tr><td><strong>3.2.5</strong></td><td>TMC Setup Complete</td><td>TMC Setup Complete</td></tr>
+                            <tr><td><strong>3.3</strong></td><td>Go-Live Activities</td><td>Production connectivity, bulk data uploads, smoke testing, and cutover.</td></tr>
+                            <tr><td><strong>3.3.2</strong></td><td>Complete and submit the Production Connectivity Form and Production IdP Onboarding Survey provided by GO.gov</td><td>Complete and submit the Production Connectivity Form and Production IdP Onboarding Survey provided by GO.gov</td></tr>
+                            <tr><td><strong>3.3.3</strong></td><td>Extract agency employee profile master data from agency's FM or HR system ahead of bulk upload to GO.gov</td><td>Extract agency employee profile master data from agency's FM or HR system ahead of bulk upload to GO.gov</td></tr>
+                            <tr><td><strong>3.3.4</strong></td><td>Work with GO.gov team to prepare and provide production data workbooks / import file for bulk upload (Profile, LOA, Cost Object Approvers, Role Assignment) via SFTP</td><td>Work with GO.gov team to prepare and provide production data workbooks / import file for bulk upload (Profile, LOA, Cost Object Approvers, Role Assignment) via SFTP</td></tr>
+                            <tr><td><strong>3.3.5</strong></td><td>Agency successfully establish GO.gov SFTP connectivity for production data loads with GO.gov team</td><td>Agency successfully establish GO.gov SFTP connectivity for production data loads with GO.gov team</td></tr>
+                            <tr><td><strong>3.3.6</strong></td><td>Execute agency FM Integration interface to load production data to GO.gov</td><td>Execute agency FM Integration interface to load production data to GO.gov</td></tr>
+                            <tr><td><strong>3.3.7</strong></td><td>Conduct and complete any delta data load of production workbooks as needed</td><td>Conduct and complete any delta data load of production workbooks as needed</td></tr>
+                            <tr><td><strong>3.3.8</strong></td><td>Confirm GO.gov URL whitelisting is completed for production</td><td>Confirm GO.gov URL whitelisting is completed for production</td></tr>
+                            <tr><td><strong>3.3.9</strong></td><td>Work with GO.gov team to enable SSO integration for GO.gov production environment</td><td>Work with GO.gov team to enable SSO integration for GO.gov production environment</td></tr>
+                            <tr><td><strong>3.3.10</strong></td><td>Work with GO.gov team to load data needed for and complete agency smoke testing of CPP fare for TMC ahead of go-live</td><td>Work with GO.gov team to load data needed for and complete agency smoke testing of CPP fare for TMC ahead of go-live</td></tr>
+                            <tr><td><strong>3.3.11</strong></td><td>Work with GO.gov team to complete agency smoke testing of expense integration ahead of go-live</td><td>Work with GO.gov team to complete agency smoke testing of expense integration ahead of go-live</td></tr>
+                            <tr><td><strong>3.3.12</strong></td><td>Production setup complete (PRR)</td><td>Production setup complete (PRR)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Phase 4 Section -->
+            <div class="phase-section" data-phase="4 ETS Close-Out">
+                <div class="phase-header" onclick="togglePhase(this)">4 ETS Close-Out</div>
+                <div class="phase-content">
+                    <table class="phase-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 15%;">Task ID</th>
+                                <th style="width: 35%;">Task Name</th>
+                                <th style="width: 50%;">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>4.1</strong></td><td>ETS Close-Out Activities</td><td>Transition out planning, checklists, and final archive capture with ETS2 vendor.</td></tr>
+                            <tr><td><strong>4.1.1</strong></td><td>Request for the ETS2 vendor to provide a transition out plan (target 6 months prior to Go-Live)</td><td>Request for the ETS2 vendor to provide a transition out plan (target 6 months prior to Go-Live)</td></tr>
+                            <tr><td><strong>4.1.2</strong></td><td>Discuss and finalize data transition out checklist from ETS2 vendor</td><td>Discuss and finalize data transition out checklist from ETS2 vendor</td></tr>
+                            <tr><td><strong>4.1.7</strong></td><td>Capture final archive and communicate receipt to GSA CO</td><td>Capture final archive and communicate receipt to GSA CO</td></tr>
+                            <tr><td><strong>4.2</strong></td><td>ETS2 TMC Close-Out</td><td>Reconciling account balances and settling transaction disputes with outgoing TMC vendor.</td></tr>
+                            <tr><td><strong>4.2.3</strong></td><td>Confirm the outgoing TMC vendor reconciled each account balance and settled each transaction dispute within 180 calendar days of the completed agency or organization</td><td>Confirm the outgoing TMC vendor reconciled each account balance and settled each transaction dispute within 180 calendar days of the completed agency or organization</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -444,6 +676,118 @@
             </table>
         </div>
     </div>
+<div id="agenciesTab" class="sub-tab-content" style="display: block;">
+            <input type="text" id="agencySearchBox" class="searchBox" placeholder="Type to search government agencies..." onkeyup="filterAgencyTable()">
+
+            <table id="agencyTable">
+                <thead>
+                    <tr>
+                        <th style="width: 15%;">Agency Acronym</th>
+                        <th style="width: 35%;">Department / Agency Name</th>
+                        <th style="width: 50%;">Key Components & Bureaus / Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>AAFES</strong></td><td>Army and Air Force Exchange Service</td><td>Retail and exchange services for military personnel.</td></tr>
+                    <tr><td><strong>ABU</strong></td><td>Access Board</td><td>Accessible design and compliance standards.</td></tr>
+                    <tr><td><strong>AbilityOne</strong></td><td>AbilityOne Commission</td><td>Employment opportunities for individuals who are blind or have significant disabilities.</td></tr>
+                    <tr><td><strong>ABMC</strong></td><td>American Battle Monuments Commission</td><td>Commemorating the service, achievements, and sacrifice of U.S. armed forces.</td></tr>
+                    <tr><td><strong>ADF</strong></td><td>African Development Foundation</td><td>Community-level enterprise development grants in Africa.</td></tr>
+                    <tr><td><strong>AFRH</strong></td><td>Armed Forces Retirement Home</td><td>Retirement communities for eligible military veterans.</td></tr>
+                    <tr><td><strong>AOC</strong></td><td>Architect of the Capitol</td><td>Maintenance, operation, and preservation of the United States Capitol complex.</td></tr>
+                    <tr><td><strong>CBO</strong></td><td>Congressional Budget Office</td><td>Economic and budgetary data to support Congress.</td></tr>
+                    <tr><td><strong>CFPB</strong></td><td>Consumer Financial Protection Bureau</td><td>Consumer financial markets and protection regulation.</td></tr>
+                    <tr><td><strong>CFTC</strong></td><td>Commodity Futures Trading Commission</td><td>Derivatives and futures markets regulation.</td></tr>
+                    <tr><td><strong>CIGIE</strong></td><td>Council of the Inspectors General on Integrity and Efficiency</td><td>Interagency council to address integrity, economy, and effectiveness across federal programs.</td></tr>
+                    <tr><td><strong>CNCS</strong></td><td>Corporation for National and Community Service</td><td>National service programs (now operating primarily as AmeriCorps).</td></tr>
+                    <tr><td><strong>COIL</strong></td><td>Congressional Office for International Leadership</td><td>Open World leadership exchange programs.</td></tr>
+                    <tr><td><strong>CPSC</strong></td><td>Consumer Product Safety Commission</td><td>Consumer product safety regulation and recall management.</td></tr>
+                    <tr><td><strong>CSB</strong></td><td>Chemical Safety Board</td><td>Independent investigation of industrial chemical accidents.</td></tr>
+                    <tr><td><strong>CSOSA</strong></td><td>Court Services and Offender Supervision Agency</td><td>Community supervision for offenders in the District of Columbia.</td></tr>
+                    <tr><td><strong>DFC</strong></td><td>U.S. International Development Finance Corporation</td><td>Development finance, private investment, and foreign aid support.</td></tr>
+                    <tr><td><strong>DHS</strong></td><td>Department of Homeland Security</td><td>DHS-HQ: Headquarters - Overall executive leadership and management.<br>DHS-CBP: US Customs and Border Protection - Securing borders and facilitating international trade.<br>DHS-ICE: Immigrations and Customs Enforcement - Enforcing federal laws governing border control, customs, trade, and immigration.<br>DHS-FEMA (FEMS): Federal Emergency Management Agency - Coordinating disaster response and recovery.<br>DHS-TSA: Transportation Security Administration - Securing the nation's transportation systems.<br>DHS-USCIS: US Citizens and Immigration Services - Overseeing lawful immigration to the United States.<br>DHS-USCG: United States Coast Guard - Maritime safety, security, and stewardship.<br>DHS-CISA: Cybersecurity and Infrastructure Security Agency - Protecting critical infrastructure from cyber and physical threats.<br>DHS-USSS: US Secret Service - Protecting national leaders and safeguarding financial infrastructure.<br>DHS-FLETC: Federal Law Enforcement Training Center - Providing career-long law enforcement training.<br>DHS-OIG (HIG): Office of Inspector General - Independent audit and investigative oversight.<br>DHS-S&T: Science and Technology - Delivering innovative scientific and technological solutions.</td></tr>
+                    <tr><td><strong>DNC</strong></td><td>Denali Commission</td><td>Infrastructure and economic development in rural Alaska.</td></tr>
+                    <tr><td><strong>DNFSB</strong></td><td>Defense Nuclear Facilities Safety Board</td><td>Independent oversight of defense nuclear facilities.</td></tr>
+                    <tr><td><strong>DOC</strong></td><td>Department of Commerce</td><td>DOC: Departmental HQ - Executive leadership and core administration.<br>DOC-USPTO: US Patent and Trademark Office - Granting U.S. patents and registering trademarks.</td></tr>
+                    <tr><td><strong>DOE</strong></td><td>Department of Energy</td><td>DOE: Departmental HQ - Energy policy and scientific research management.<br>DOE-BPA: Bonneville Power Administration - Marketing federal hydroelectric power in the Pacific Northwest.<br>DOE-WAPA: Western Area Power Administration - Delivering wholesale federal electric power across western states.</td></tr>
+                    <tr><td><strong>DoED</strong></td><td>Department of Education</td><td>Federal education policy, student aid, and school funding oversight.</td></tr>
+                    <tr><td><strong>DOI</strong></td><td>Department of the Interior</td><td>DOI: Departmental HQ - Conservation and management of public lands and minerals.<br>DOI-IBC: Interior Business Center - Providing administrative and financial shared services across government.</td></tr>
+                    <tr><td><strong>DOJ</strong></td><td>US Department of Justice</td><td>Enforcement of federal laws and administration of justice.</td></tr>
+                    <tr><td><strong>DOL</strong></td><td>Department of Labor</td><td>Occupational safety, wage and hour standards, and employment statistics.</td></tr>
+                    <tr><td><strong>DOS</strong></td><td>Department of State</td><td>Foreign policy, international relations, and diplomatic missions.</td></tr>
+                    <tr><td><strong>DOT</strong></td><td>Department of Transportation</td><td>DOT: Departmental HQ - National transportation policy development.<br>DOT-FAA: Federal Aviation Administration - Regulation and oversight of civil aviation.</td></tr>
+                    <tr><td><strong>EEOC</strong></td><td>Equal Employment Opportunity Commission</td><td>Enforcement of federal laws prohibiting workplace discrimination.</td></tr>
+                    <tr><td><strong>EOP</strong></td><td>Executive Office of the President</td><td>Support staff and advisory bodies directly assisting the President of the United States.</td></tr>
+                    <tr><td><strong>EPA</strong></td><td>Environmental Protection Agency</td><td>Environmental protection, air and water quality regulation, and pollution control.</td></tr>
+                    <tr><td><strong>EXIM</strong></td><td>Export-Import Bank of the United States</td><td>Official export credit agency supporting U.S. goods and services abroad.</td></tr>
+                    <tr><td><strong>FCA</strong></td><td>Farm Credit Administration</td><td>Regulation of the Farm Credit System and agricultural lenders.</td></tr>
+                    <tr><td><strong>FCC</strong></td><td>Federal Communications Commission</td><td>Interstate and international communications by radio, television, wire, satellite, and cable.</td></tr>
+                    <tr><td><strong>FCSIC</strong></td><td>Farm Credit Insurance Corporation</td><td>Ensuring the timely payment of principal and interest on Farm Credit obligations.</td></tr>
+                    <tr><td><strong>FERC</strong></td><td>Federal Energy Regulatory Commission</td><td>Regulation of interstate transmission of electricity, natural gas, and oil.</td></tr>
+                    <tr><td><strong>FHFA</strong></td><td>Federal Housing Finance Agency</td><td>FHFA: Agency HQ - Oversight of Fannie Mae, Freddie Mac, and Federal Home Loan Banks.<br>FHFA-OIG: Office of Inspector General - Independent oversight and auditing of FHFA programs.</td></tr>
+                    <tr><td><strong>FLRA</strong></td><td>Federal Labor Relations Authority</td><td>Labor-management relations in the federal civilian workforce.</td></tr>
+                    <tr><td><strong>FMC</strong></td><td>Federal Maritime Commission</td><td>Regulation of international ocean transportation.</td></tr>
+                    <tr><td><strong>FMCS</strong></td><td>Federal Mediation and Conciliation Service</td><td>Mediation and conflict resolution services for labor and management disputes.</td></tr>
+                    <tr><td><strong>FMSHRC</strong></td><td>Federal Mine Safety and Health Review Commission</td><td>Independent adjudication of disputes under the Mine Act.</td></tr>
+                    <tr><td><strong>FRTIB</strong></td><td>Federal Retirement Thrift Investment Board</td><td>Administration of the Thrift Savings Plan (TSP) for federal employees and military personnel.</td></tr>
+                    <tr><td><strong>FTC</strong></td><td>Federal Trade Commission</td><td>Consumer protection and antitrust law enforcement.</td></tr>
+                    <tr><td><strong>GAO</strong></td><td>Government Accountability Office</td><td>Independent oversight and auditing for Congress.</td></tr>
+                    <tr><td><strong>GCC</strong></td><td>Gulf Coast Ecosystem Restoration Council</td><td>Restoration and protection of the Gulf Coast ecosystem.</td></tr>
+                    <tr><td><strong>GPO</strong></td><td>Government Publishing Office</td><td>Production and distribution of official publications and information products for the federal government.</td></tr>
+                    <tr><td><strong>GSA</strong></td><td>General Services Administration</td><td>GSA-OAS: Office of Administrative Services - Delivering internal administrative and operational support functions.</td></tr>
+                    <tr><td><strong>HHS</strong></td><td>Department of Health and Human Services</td><td>Protecting the health of all Americans and providing essential human services.</td></tr>
+                    <tr><td><strong>HUD</strong></td><td>US Department of Housing and Urban Development</td><td>Housing policy, community development programs, and mortgage assistance.</td></tr>
+                    <tr><td><strong>IAF</strong></td><td>Inter-American Foundation</td><td>Grassroots development assistance in Latin America and the Caribbean.</td></tr>
+                    <tr><td><strong>IMLS</strong></td><td>Institute of Museum and Library Services</td><td>Federal support for the nation's libraries and museums.</td></tr>
+                    <tr><td><strong>LOC</strong></td><td>Library of Congress</td><td>Research library and copyright office serving Congress and the public.</td></tr>
+                    <tr><td><strong>MCC</strong></td><td>Millennium Challenge Corporation</td><td>Innovative foreign assistance aimed at reducing global poverty through economic growth.</td></tr>
+                    <tr><td><strong>MEDPAC</strong></td><td>Medicare Payment Advisory Commission</td><td>Independent legislative branch agency providing Medicare policy advice.</td></tr>
+                    <tr><td><strong>MSPB</strong></td><td>Merit Systems Protection Board</td><td>Protection of federal merit systems and employee appeals.</td></tr>
+                    <tr><td><strong>NARA</strong></td><td>National Archives and Records Administration</td><td>Preservation and documentation of government and historical records.</td></tr>
+                    <tr><td><strong>NASA</strong></td><td>National Aeronautics and Space Administration</td><td>Civil space program, aeronautics research, and space exploration.</td></tr>
+                    <tr><td><strong>NCD</strong></td><td>National Council on Disability</td><td>Independent federal agency advising on disability policies and practices.</td></tr>
+                    <tr><td><strong>NCPC</strong></td><td>National Capital Planning Commission</td><td>Federal planning agency for the National Capital Region.</td></tr>
+                    <tr><td><strong>NCUA</strong></td><td>National Credit Union Administration</td><td>Supervision and deposit insurance for federal credit unions.</td></tr>
+                    <tr><td><strong>NEA</strong></td><td>National Endowment for the Arts</td><td>Support and funding for artistic projects nationwide.</td></tr>
+                    <tr><td><strong>NEH</strong></td><td>National Endowment for the Humanities</td><td>Grants and support for research, education, and public programs in the humanities.</td></tr>
+                    <tr><td><strong>NGA</strong></td><td>National Gallery of Art</td><td>National art museum holding collections for public education and enjoyment.</td></tr>
+                    <tr><td><strong>NLRB</strong></td><td>National Labor Relations Board</td><td>Conducting elections for labor representation and remedying unfair labor practices.</td></tr>
+                    <tr><td><strong>NMB</strong></td><td>National Mediation Board</td><td>Labor-management relations under the Railway Labor Act.</td></tr>
+                    <tr><td><strong>NRC</strong></td><td>Nuclear Regulatory Commission</td><td>Regulation of civilian use of nuclear materials and power plants.</td></tr>
+                    <tr><td><strong>NSF</strong></td><td>National Science Foundation</td><td>Funding for fundamental research and education in all non-medical fields of science and engineering.</td></tr>
+                    <tr><td><strong>NTSB</strong></td><td>National Transportation Safety Board</td><td>Independent accident investigation agency covering civil aviation, highway, marine, pipeline, and railroad incidents.</td></tr>
+                    <tr><td><strong>OCWR</strong></td><td>Office of Congressional Workplace Rights</td><td>Application and enforcement of workplace and employment laws in the legislative branch.</td></tr>
+                    <tr><td><strong>OGE</strong></td><td>Office of Government Ethics</td><td>Executive branch ethics program prevention and oversight.</td></tr>
+                    <tr><td><strong>OPM</strong></td><td>Office of Personnel Management</td><td>Human resources, personnel management, and policy for the federal civil service.</td></tr>
+                    <tr><td><strong>OSC</strong></td><td>Office of Special Counsel</td><td>Investigating whistleblower disclosures and prohibited personnel practices.</td></tr>
+                    <tr><td><strong>OSHRC</strong></td><td>Occupational Safety and Health Review Commission</td><td>Adjudication of contested OSHA citations and penalties.</td></tr>
+                    <tr><td><strong>PBGC</strong></td><td>Pension Benefit Guaranty Corporation</td><td>Insurance program protecting private-sector defined benefit pension plans.</td></tr>
+                    <tr><td><strong>PCLOB</strong></td><td>Privacy and Civil Liberties Oversight Board</td><td>Independent oversight ensuring counterterrorism efforts balance privacy and civil liberties.</td></tr>
+                    <tr><td><strong>PDS</strong></td><td>Public Defender Service</td><td>Quality legal representation for indigent clients in D.C. courts.</td></tr>
+                    <tr><td><strong>Peace Corps</strong></td><td>Peace Corps</td><td>Volunteer service program promoting international peace and friendship.</td></tr>
+                    <tr><td><strong>PSA</strong></td><td>Pretrial Services Agency for the District of Columbia</td><td>Pretrial release and supervision services for D.C. defendants.</td></tr>
+                    <tr><td><strong>RRB</strong></td><td>Railroad Retirement Board</td><td>Retirement, survivor, and unemployment benefits for railroad workers.</td></tr>
+                    <tr><td><strong>SBA</strong></td><td>Small Business Administration</td><td>Support, capital, and contracting assistance for small businesses.</td></tr>
+                    <tr><td><strong>SEC</strong></td><td>Securities and Exchange Commission</td><td>Regulation of securities markets, exchanges, and investor protection.</td></tr>
+                    <tr><td><strong>SI</strong></td><td>Smithsonian Institution</td><td>Museum, education, and research complex.</td></tr>
+                    <tr><td><strong>SSA</strong></td><td>Social Security Administration</td><td>Administration of Social Security retirement, survivors, and disability benefits.</td></tr>
+                    <tr><td><strong>SSS</strong></td><td>Selective Service System</td><td>Maintenance of data for potential military draft registration.</td></tr>
+                    <tr><td><strong>STB</strong></td><td>Surface Transportation Board</td><td>Economic regulatory agency resolving rail, motor carrier, and pipeline disputes.</td></tr>
+                    <tr><td><strong>TREAS</strong></td><td>Department of the Treasury</td><td>TREAS-TDP: Departmental Offices - Core policy formulation and financial management.<br>TREAS-ARC: Administrative Resource Center - Administrative shared services provider.<br>TREAS-BEP: Bureau of Engraving and Printing - Designing and producing U.S. security documents and currency.<br>TREAS-CDF: Community Development Financial Institutions Fund - Expanding economic growth in distressed communities.<br>TREAS-DCP: DC Pensions - Managing federal payments for District of Columbia pension plans.<br>TREAS-FIN: Financial Crimes Enforcement Network - Safeguarding the financial system from illicit use.<br>TREas-IRS: Internal Revenue Service - Tax collection and tax law administration.<br>TREAS-MNT: US Mint - Producing circulating coinage and national medals.<br>TREAS-OIG: Office of Inspector General - Independent audits and investigative oversight.<br>TREAS-BFS: Treasury Common Services Center - Shared administrative and financial operations.<br>TREAS-TGT: IG for Tax Administration (TIGTA) - Independent oversight of IRS operations.<br>TREAS-TTB: Alcohol and Tobacco Tax and Trade Bureau - Enforcing laws governing alcohol and tobacco products.</td></tr>
+                    <tr><td><strong>USAGM</strong></td><td>U.S. Agency for Global Media</td><td>Overseeing international civilian broadcasting of the U.S. government.</td></tr>
+                    <tr><td><strong>USCAV</strong></td><td>U.S. Court of Appeals for Veterans Claims</td><td>Judicial review of decisions made by the Board of Veterans' Appeals.</td></tr>
+                    <tr><td><strong>USDA</strong></td><td>U.S. Department of Agriculture</td><td>Farming, forestry, rural development, and food safety standards.</td></tr>
+                    <tr><td><strong>USEAC</strong></td><td>U.S. Election Assistance Commission</td><td>Election administration guidelines and voting system standards.</td></tr>
+                    <tr><td><strong>USHMM</strong></td><td>U.S. Holocaust Memorial Museum</td><td>Documentation, study, and interpretation of Holocaust history.</td></tr>
+                    <tr><td><strong>USIP</strong></td><td>U.S. Institute of Peace</td><td>Nonpartisan institute dedicated to preventing and resolving violent international conflicts.</td></tr>
+                    <tr><td><strong>USITC</strong></td><td>U.S. International Trade Commission</td><td>Analysis of international trade issues and enforcement against unfair trade practices.</td></tr>
+                    <tr><td><strong>USTC</strong></td><td>U.S. Tax Court</td><td>Adjudication of disputes over federal income, estate, and gift taxes.</td></tr>
+                    <tr><td><strong>USTDA</strong></td><td>U.S. Trade and Development Agency</td><td>Connecting businesses to infrastructure projects in developing economies.</td></tr>
+                    <tr><td><strong>VA</strong></td><td>Department of Veterans Affairs</td><td>Providing healthcare, benefits, and memorial services to veterans.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
     <script>
         function openTab(evt, tabName) {
@@ -494,31 +838,54 @@
             evt.currentTarget.classList.add("active");
         }
 
-        function filterTaskTable() {
-            var input, filter, table, tr, td, i, txtValue;
+        function togglePhase(headerElement) {
+            var section = headerElement.parentElement;
+            section.classList.toggle("collapsed");
+        }
+
+        function filterTaskTables() {
+            var input, filter, sections, i, j, tr, tdId, tdName, tdDesc, matchFound;
             input = document.getElementById("taskSearchBox");
             filter = input.value.toUpperCase();
-            table = document.getElementById("taskTable");
-            tr = table.getElementsByTagName("tr");
-            for (i = 1; i < tr.length; i++) {
-                tdId = tr[i].getElementsByTagName("td")[0];
-                tdName = tr[i].getElementsByTagName("td")[1];
-                tdDesc = tr[i].getElementsByTagName("td")[2];
-                if (tdId || tdName || tdDesc) {
-                    txtId = tdId.textContent || tdId.innerText;
-                    txtName = tdName.textContent || tdName.innerText;
-                    txtDesc = tdDesc.textContent || tdDesc.innerText;
-                    if (txtId.toUpperCase().indexOf(filter) > -1 || txtName.toUpperCase().indexOf(filter) > -1 || txtDesc.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none";
+            sections = document.getElementsByClassName("phase-section");
+
+            for (i = 0; i < sections.length; i++) {
+                var table = sections[i].getElementsByClassName("phase-table")[0];
+                tr = table.getElementsByTagName("tr");
+                matchFound = false;
+
+                for (j = 1; j < tr.length; j++) {
+                    tdId = tr[j].getElementsByTagName("td")[0];
+                    tdName = tr[j].getElementsByTagName("td")[1];
+                    tdDesc = tr[j].getElementsByTagName("td")[2];
+
+                    if (tdId || tdName || tdDesc) {
+                        txtId = tdId.textContent || tdId.innerText;
+                        txtName = tdName.textContent || tdName.innerText;
+                        txtDesc = tdDesc.textContent || tdDesc.innerText;
+
+                        if (txtId.toUpperCase().indexOf(filter) > -1 || txtName.toUpperCase().indexOf(filter) > -1 || txtDesc.toUpperCase().indexOf(filter) > -1) {
+                            tr[j].style.display = "";
+                            matchFound = true;
+                        } else {
+                            tr[j].style.display = "none";
+                        }
                     }
+                }
+
+                if (matchFound) {
+                    sections[i].style.display = "";
+                    if (filter !== "") {
+                        sections[i].classList.remove("collapsed"); // auto expand if searching
+                    }
+                } else {
+                    sections[i].style.display = "none";
                 }
             }
         }
 
         function filterAcronymTable() {
-            var input, filter, table, tr, td, i, txtValue;
+            var input, filter, table, tr, tdAcronym, tdDef, tdExt, i;
             input = document.getElementById("acronymSearchBox");
             filter = input.value.toUpperCase();
             table = document.getElementById("acronymTable");

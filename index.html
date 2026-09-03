@@ -260,6 +260,26 @@
             margin-bottom: 4px;
             color: #334155;
         }
+
+        /* Milestone Tracker Topic Navigation */
+        html { scroll-behavior: smooth; }
+        .milestone-nav {
+            display: flex; flex-wrap: wrap; gap: 8px; margin: 15px 0 25px; padding: 12px;
+            background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 8px;
+        }
+        .milestone-nav a {
+            text-decoration: none; background: #fff; color: #1e3a8a; border: 1px solid #cbd5e1;
+            padding: 8px 12px; border-radius: 20px; font-size: 13px; font-weight: 600;
+        }
+        .milestone-nav a:hover { background: #1e3a8a; color: #fff; }
+        .back-to-top {
+            position: fixed; right: 24px; bottom: 24px; z-index: 1000; display: none;
+            border: none; border-radius: 24px; padding: 11px 16px; background: #1e3a8a; color: #fff;
+            font-size: 14px; font-weight: 600; cursor: pointer; box-shadow: 0 3px 10px rgba(0,0,0,.2);
+        }
+        .back-to-top:hover { background: #1d4ed8; }
+        .back-to-top.show { display: block; }
+
     </style>
 </head>
 <body>
@@ -344,7 +364,17 @@
                 <p>Framework for tracking, editing rules, logic alerts, life-cycle breakdown, roadblocks matrix, escalation flow, and searchable reference list of individual tasks.</p>
             </div>
 
-            <h2>Mastering the Milestone Tracker</h2>
+            <!-- Milestone Tracker Topic Navigation -->
+            <div class="milestone-nav" aria-label="Milestone Tracker topics">
+                <a href="#mastering-tracker">Mastering the Tracker</a>
+                <a href="#lifecycle-roadmap">Lifecycle Roadmap</a>
+                <a href="#roadblocks">Roadblocks</a>
+                <a href="#status-definitions">Status Definitions</a>
+                <a href="#escalation-flow">Escalation Flow</a>
+                <a href="#task-index">Task Index</a>
+            </div>
+
+            <h2 id="mastering-tracker">Mastering the Milestone Tracker</h2>
             <div class="card">
                 <p style="margin-top: 0;">The Milestone Tracker is the primary tool for agency visibility. Below is the framework for managing it.</p>
                 
@@ -377,7 +407,7 @@
                 </ul>
             </div>
 
-            <h2>Phase-by-Phase Lifecycle Roadmap</h2>
+            <h2 id="lifecycle-roadmap">Phase-by-Phase Lifecycle Roadmap</h2>
             <div class="card">
                 <p style="margin-top: 0;">Breakdown of the overarching lifecycle to help CEMs guide agencies through key transition phases:</p>
                 <ul>
@@ -388,7 +418,7 @@
                 </ul>
             </div>
 
-            <h2>Common Roadblocks & Mitigation Matrix</h2>
+            <h2 id="roadblocks">Common Roadblocks & Mitigation Matrix</h2>
             <div class="card">
                 <p style="margin-top: 0;">Quick-reference guide for navigating common agency bottlenecks:</p>
                 <ul>
@@ -398,7 +428,7 @@
                 </ul>
             </div>
 
-            <h2>Status Definitions</h2>
+            <h2 id="status-definitions">Status Definitions</h2>
             <div class="card">
                 <div class="sub-box" style="background: #ffffff; border: 1px solid #cbd5e1; margin-bottom: 0;">
                     <ul style="margin: 0;">
@@ -410,7 +440,7 @@
                 </div>
             </div>
 
-            <h2>Escalation & Contact Routing Flow</h2>
+            <h2 id="escalation-flow">Escalation & Contact Routing Flow</h2>
             <div class="card">
                 <p style="margin-top: 0;">Know precisely who to contact when issues arise:</p>
                 <ul>
@@ -1382,6 +1412,9 @@
         </table>
     </div>
 
+
+    <button id="backToTop" class="back-to-top" type="button" aria-label="Back to Milestone Tracker topics">↑ Back to Topics</button>
+
     <!-- Include your script block here containing openTab, switchCemSubTab, togglePhase, and filter functions -->
     <script>
         function openTab(evt, tabName) {
@@ -1415,13 +1448,6 @@
             document.getElementById(subTabName).classList.add("active");
             evt.currentTarget.className += " active";
 
-            // If switching to the Milestone Tracker, scroll down to the task index heading
-            if (subTabName === 'cemTasksSubTab') {
-                const taskIndexElem = document.getElementById('task-index');
-                if (taskIndexElem) {
-                    taskIndexElem.scrollIntoView({ behavior: 'smooth' });
-                }
-            }
         }
 
         function switchSubTab(evt, subTabName) {
@@ -1530,6 +1556,39 @@
                 }
             }
         }
+
+        // Show a return button after navigating down the Milestone Tracker.
+        (function () {
+            var backToTop = document.getElementById("backToTop");
+            var milestoneNav = document.querySelector(".milestone-nav");
+
+            function updateBackToTop() {
+                var milestoneTab = document.getElementById("cemTasksSubTab");
+                var milestoneActive = milestoneTab && milestoneTab.style.display !== "none";
+                if (milestoneActive && window.scrollY > 250) {
+                    backToTop.classList.add("show");
+                } else {
+                    backToTop.classList.remove("show");
+                }
+            }
+
+            backToTop.addEventListener("click", function () {
+                if (milestoneNav) {
+                    milestoneNav.scrollIntoView({ behavior: "smooth", block: "start" });
+                } else {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+            });
+
+            window.addEventListener("scroll", updateBackToTop);
+            window.addEventListener("resize", updateBackToTop);
+            document.addEventListener("click", function (event) {
+                if (event.target.closest(".milestone-nav a, #GuideTab .sub-btn")) {
+                    setTimeout(updateBackToTop, 50);
+                }
+            });
+        })();
+
     </script>
 </body>
 </html>

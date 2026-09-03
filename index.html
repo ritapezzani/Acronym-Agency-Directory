@@ -421,59 +421,53 @@
                 </ul>
             </div>
 
-            <h2>Task Names, Identifiers & Descriptions</h2>
+            <!-- Added id="task-index" here to serve as the anchor target -->
+            <h2 id="task-index">Task Names, Identifiers & Descriptions</h2>
             <input type="text" id="taskSearchBox" class="searchBox" placeholder="Type to search task numbers, task names, or descriptions..." onkeyup="filterTaskTables()">
 
-            <!-- Phase 1 Section -->
+           <!-- Phase 1 Section -->
             <div class="phase-section" data-phase="1 Pre-Transition Planning">
                 <div class="phase-header" onclick="togglePhase(this)">1 Pre-Transition Planning</div>
                 <div class="phase-content">
                     <table class="phase-table">
                         <thead>
                             <tr>
-                                <th style="width: 15%;">Task ID</th>
-                                <th style="width: 35%;">Task Name</th>
-                                <th style="width: 50%;">Description</th>
+                                <th style="width: 12%;">Task ID</th>
+                                <th style="width: 25%;">Task Name</th>
+                                <th style="width: 35%;">Description</th>
+                                <th style="width: 28%;">Client Talking Point</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td><strong>1.1</strong></td><td>Initiation</td><td>Establish foundational project governance, align executive stakeholders, secure necessary transition budgets, and execute initial project setup activities</td></tr>
-                            <tr><td><strong>1.1.2</strong></td><td>Validate GO.gov transition budget</td><td>Confirm and document the financial resources required to successfully migrate operations from ETS2 to GO.gov</td></tr>
-                            <tr><td><strong>1.1.3</strong></td><td>Validate agency sponsor to be executive champion for GO.gov</td><td>Secure formal commitment from the designated executive sponsor to champion the GO.gov transition initiative</td></tr>
-                            <tr><td><strong>1.1.4</strong></td><td>Validate agency transition team members and share refreshed contact list back with GSA</td><td>Finalize roster of agency transition team leads and provide updated communication channels back to the GSA</td></tr>
-                            <tr><td><strong>1.1.7</strong></td><td>Share initial project plan with GO.gov PMO</td><td>Deliver the agency's baseline transition roadmap and milestone schedule to the GO.gov Program Management Office</td></tr>
-                            <tr><td><strong>1.2</strong></td><td>T&E Process Planning</td><td>Map current travel and expense workflows, identify operational gaps, and design streamlined target-state processes for GO.gov</td></tr>
-                            <tr><td><strong>1.2.3</strong></td><td>Conduct As-Is /To-Be Gap Analysis between agency processes and changes with GO.gov</td><td>Analyze existing internal agency travel procedures against GO.gov system capabilities to isolate required workflow adaptations</td></tr>
-                            <tr><td><strong>1.3</strong></td><td>FM Integration Planning</td><td>Plan financial connectivity. Note: If an agency uses a Shared Service Provider (e.g., Treasury, IBC), they do not need an FM Connectivity Form. Check the list first.</td></tr>
-                            <tr><td><strong>1.3.3</strong></td><td>Determine API or SFTP interface approach and communicate decision to GSA</td><td>Finalize and formally submit the technical transport mechanism (API vs. Secure File Transfer Protocol) for financial data exchanges. CEM Pro-Tip: Don't force this if they use a Shared Service Provider (e.g., IBC/Treasury); they may already have a connection. Check the existing list first.
-Client Talking Point: "We need to pick your technical transport method early so your IT team has time to build the 'pipes' between your financial system and GO.gov."</td></tr>
-                            <tr><td><strong>1.3.4</strong></td><td>Review agency's current data transactions. Confirm if these transactions are all in scope for GO.gov</td><td>Audit current financial and travel transaction types to verify complete alignment with GO.gov functional boundaries</td></tr>
-                            <tr><td><strong>1.3.5</strong></td><td>Identify and document gaps from FM specs and IOC functionality to current interfaces</td><td>Compare current agency financial data outputs against GO.gov Interface Operating Concept (IOC) specifications to catch structural variances early</td></tr>
-                            <tr><td><strong>1.3.7</strong></td><td>Finalize project plan for FM integration development with FOC-A functionality starting with draft specifications and share back with GSA</td><td>Establish the definitive development schedule for Financial Management integration supporting Full Operating Capability - Agency (FOC-A) features</td></tr>
-                            <tr><td><strong>1.4</strong></td><td>Assisted Acquisition - TMC Planning</td><td>Coordinate procurement frameworks, acquisition strategies, and service requirements for Travel Management Company support</td></tr>
-                            <tr><td><strong>1.5</strong></td><td>Organizational Change Management / Training</td><td>Develop comprehensive change enablement strategies, stakeholder communication plans, and end-user training curricula</td></tr>
-                            <tr><td><strong>1.5.1</strong></td><td>Review the change management and training plan</td><td>Evaluate the proposed change strategy and educational deliverables to ensure organizational readiness</td></tr>
-                            <tr><td><strong>1.5.5</strong></td><td>Identify list of Change Champions and set up network / meetings</td><td>Recruit influential internal stakeholders to act as adoption advocates and establish a regular collaboration cadence</td></tr>
-                            <tr><td><strong>1.5.6</strong></td><td>Training Planning</td><td>Formulate the rollout logistics, instructional formats, and resource allocations for user capability building</td></tr>
-                            <tr><td><strong>1.5.6.1</strong></td><td>Respond to training needs analysis questionnaire</td><td>Complete the foundational assessment detailing agency-specific learning styles, user volumes, and system interaction levels</td></tr>
-                            <tr><td><strong>1.6</strong></td><td>System Administration, Reporting, and Service Desk Process Planning</td><td>Define administrative hierarchies, report migration paths, and Tier 1 help desk escalation pathways</td></tr>
-                            <tr><td><strong>1.6.1</strong></td><td>Review MSP Customer Support Plan and prepare for MSP Tier 1 services</td><td>Familiarize agency support personnel with Managed Service Provider ticketing workflows and service level expectations</td></tr>
-                            <tr><td><strong>1.7</strong></td><td>Security Planning</td><td>Appoint key security personnel, establish compliance baselines, and fulfill credentialing prerequisites for secure portal access</td></tr>
-                            <tr><td><strong>1.7.1</strong></td><td>Designate security lead and team members (e.g. ISSO) and sign NDA for access to Connect.gov security page</td><td>Sign the NDA to access Connect.gov security pages.
-CEM Pro-Tip: This is the Master Key. Without the NDA, they cannot see the CUI (Controlled Unclassified Information) documentation required for FedRAMP. Do this first.
-Client Talking Point: "Access to our security portal is restricted. Signing this NDA is the gate that unlocks the technical documentation you need for your own security team's review"</td></tr>
-                            <tr><td><strong>1.8</strong></td><td>ATO/ATU Considerations (FedRAMP)</td><td>Navigate federal security authorization requirements, boundary documentation, and interconnection agreements</td></tr>
-                            <tr><td><strong>1.8.2</strong></td><td>Coordinate agency ATO/ATU timeline relative to GO.gov PMO FedRAMP ATO timeline</td><td>Align the agency's Authority to Operate (ATO) or Authority to Use (ATU) milestones with the overarching GO.gov FedRAMP compliance schedule</td></tr>
-                            <tr><td><strong>1.8.4</strong></td><td>Review CRM defined in FedRAMP packages and prepare CRM SSP (to include a Privacy Impact Assessment PIA)</td><td>Examine the Customer Responsibility Matrix (CRM) within the System Security Plan (SSP) and complete required privacy impact documentation</td></tr>
-                            <tr><td><strong>1.8.7</strong></td><td>Issue TMC Security Authorization following one of three options 1) inherit the GSA MFR in alignment with OMB A-130, 2) issue an ATU for customer responsible controls, 3)</td><td>Formally authorize the Travel Management Company utilizing GSA's Memorandum for the Record (MFR), a tailored ATU, or independent security review</td></tr>
-                            <tr><td><strong>1.8.8</strong></td><td>Provide a completed draft copy of the Interconnection Security Agreement (ISA) or Information Exchange Agreement (IEA) to the GO.gov team to review. Address comments,</td><td>Sign the Interconnection/Information Exchange Agreement.
-CEM Pro-Tip: This is a legal binding agreement for data flow. If this isn't signed, the agency cannot legally connect to the GO.gov environment.
-Client Talking Point: "This agreement protects both your agency and GSA by explicitly defining how our systems talk to each other. It’s a required step to open the data flow"</td></tr>
-                            <tr><td><strong>1.8.8.1</strong></td><td>Complete and sign Interconnection Security Agreement (ISA) or Information Exchange Agreement (IEA) addressing customer connectivity to GO.gov</td><td>Execute the final binding security agreement governing secure technical data exchange between agency infrastructure and GO.gov</td></tr>
-                            <tr><td><strong>1.8.9</strong></td><td>Provide a signed copy of agency's CRM ATO / ATU letter for implementation of GO.gov to the GO.gov team</td><td>Provide final agency ATO/ATU letter.
-CEM Pro-Tip: They cannot load production data without this. If they are lagging, highlight the risk to their go-live date.
-Client Talking Point: "Your leadership needs to formally authorize the use of GO.gov, confirming your side of the security controls are in place."
-</td></tr>
+                            <tr><td><strong>1.1</strong></td><td>Initiation</td><td>Establish foundational project governance, align executive stakeholders, secure necessary transition budgets, and execute initial project setup activities</td><td>-</td></tr>
+                            <tr><td><strong>1.1.2</strong></td><td>Validate GO.gov transition budget</td><td>Confirm and document the financial resources required to successfully migrate operations from ETS2 to GO.gov</td><td>-</td></tr>
+                            <tr><td><strong>1.1.3</strong></td><td>Validate agency sponsor to be executive champion for GO.gov</td><td>Secure formal commitment from the designated executive sponsor to champion the GO.gov transition initiative</td><td>-</td></tr>
+                            <tr><td><strong>1.1.4</strong></td><td>Validate agency transition team members and share refreshed contact list back with GSA</td><td>Finalize roster of agency transition team leads and provide updated communication channels back to the GSA</td><td>-</td></tr>
+                            <tr><td><strong>1.1.7</strong></td><td>Share initial project plan with GO.gov PMO</td><td>Deliver the agency's baseline transition roadmap and milestone schedule to the GO.gov Program Management Office</td><td>-</td></tr>
+                            <tr><td><strong>1.2</strong></td><td>T&E Process Planning</td><td>Map current travel and expense workflows, identify operational gaps, and design streamlined target-state processes for GO.gov</td><td>-</td></tr>
+                            <tr><td><strong>1.2.3</strong></td><td>Conduct As-Is /To-Be Gap Analysis between agency processes and changes with GO.gov</td><td>Analyze existing internal agency travel procedures against GO.gov system capabilities to isolate required workflow adaptations</td><td>-</td></tr>
+                            <tr><td><strong>1.3</strong></td><td>FM Integration Planning</td><td>Plan financial connectivity. Note: If an agency uses a Shared Service Provider (e.g., Treasury, IBC), they do not need an FM Connectivity Form. Check the list first.</td><td>-</td></tr>
+                            <tr><td><strong>1.3.3</strong></td><td>Determine API or SFTP interface approach and communicate decision to GSA</td><td>Finalize and formally submit the technical transport mechanism (API vs. Secure File Transfer Protocol) for financial data exchanges. CEM Pro-Tip: Don't force this if they use a Shared Service Provider (e.g., IBC/Treasury); they may already have a connection. Check the existing list first.</td><td>"We need to pick your technical transport method early so your IT team has time to build the 'pipes' between your financial system and GO.gov."</td></tr>
+                            <tr><td><strong>1.3.4</strong></td><td>Review agency's current data transactions. Confirm if these transactions are all in scope for GO.gov</td><td>Audit current financial and travel transaction types to verify complete alignment with GO.gov functional boundaries</td><td>-</td></tr>
+                            <tr><td><strong>1.3.5</strong></td><td>Identify and document gaps from FM specs and IOC functionality to current interfaces</td><td>Compare current agency financial data outputs against GO.gov Interface Operating Concept (IOC) specifications to catch structural variances early</td><td>-</td></tr>
+                            <tr><td><strong>1.3.7</strong></td><td>Finalize project plan for FM integration development with FOC-A functionality starting with draft specifications and share back with GSA</td><td>Establish the definitive development schedule for Financial Management integration supporting Full Operating Capability - Agency (FOC-A) features</td><td>-</td></tr>
+                            <tr><td><strong>1.4</strong></td><td>Assisted Acquisition - TMC Planning</td><td>Coordinate procurement frameworks, acquisition strategies, and service requirements for Travel Management Company support</td><td>-</td></tr>
+                            <tr><td><strong>1.5</strong></td><td>Organizational Change Management / Training</td><td>Develop comprehensive change enablement strategies, stakeholder communication plans, and end-user training curricula</td><td>-</td></tr>
+                            <tr><td><strong>1.5.1</strong></td><td>Review the change management and training plan</td><td>Evaluate the proposed change strategy and educational deliverables to ensure organizational readiness</td><td>-</td></tr>
+                            <tr><td><strong>1.5.5</strong></td><td>Identify list of Change Champions and set up network / meetings</td><td>Recruit influential internal stakeholders to act as adoption advocates and establish a regular collaboration cadence</td><td>-</td></tr>
+                            <tr><td><strong>1.5.6</strong></td><td>Training Planning</td><td>Formulate the rollout logistics, instructional formats, and resource allocations for user capability building</td><td>-</td></tr>
+                            <tr><td><strong>1.5.6.1</strong></td><td>Respond to training needs analysis questionnaire</td><td>Complete the foundational assessment detailing agency-specific learning styles, user volumes, and system interaction levels</td><td>-</td></tr>
+                            <tr><td><strong>1.6</strong></td><td>System Administration, Reporting, and Service Desk Process Planning</td><td>Define administrative hierarchies, report migration paths, and Tier 1 help desk escalation pathways</td><td>-</td></tr>
+                            <tr><td><strong>1.6.1</strong></td><td>Review MSP Customer Support Plan and prepare for MSP Tier 1 services</td><td>Familiarize agency support personnel with Managed Service Provider ticketing workflows and service level expectations</td><td>-</td></tr>
+                            <tr><td><strong>1.7</strong></td><td>Security Planning</td><td>Appoint key security personnel, establish compliance baselines, and fulfill credentialing prerequisites for secure portal access</td><td>-</td></tr>
+                            <tr><td><strong>1.7.1</strong></td><td>Designate security lead and team members (e.g. ISSO) and sign NDA for access to Connect.gov security page</td><td>Sign the NDA to access Connect.gov security pages. CEM Pro-Tip: This is the Master Key. Without the NDA, they cannot see the CUI (Controlled Unclassified Information) documentation required for FedRAMP. Do this first.</td><td>"Access to our security portal is restricted. Signing this NDA is the gate that unlocks the technical documentation you need for your own security team's review."</td></tr>
+                            <tr><td><strong>1.8</strong></td><td>ATO/ATU Considerations (FedRAMP)</td><td>Navigate federal security authorization requirements, boundary documentation, and interconnection agreements</td><td>-</td></tr>
+                            <tr><td><strong>1.8.2</strong></td><td>Coordinate agency ATO/ATU timeline relative to GO.gov PMO FedRAMP ATO timeline</td><td>Align the agency's Authority to Operate (ATO) or Authority to Use (ATU) milestones with the overarching GO.gov FedRAMP compliance schedule</td><td>-</td></tr>
+                            <tr><td><strong>1.8.4</strong></td><td>Review CRM defined in FedRAMP packages and prepare CRM SSP (to include a Privacy Impact Assessment PIA)</td><td>Examine the Customer Responsibility Matrix (CRM) within the System Security Plan (SSP) and complete required privacy impact documentation</td><td>-</td></tr>
+                            <tr><td><strong>1.8.7</strong></td><td>Issue TMC Security Authorization following one of three options 1) inherit the GSA MFR in alignment with OMB A-130, 2) issue an ATU for customer responsible controls, 3)</td><td>Formally authorize the Travel Management Company utilizing GSA's Memorandum for the Record (MFR), a tailored ATU, or independent security review</td><td>-</td></tr>
+                            <tr><td><strong>1.8.8</strong></td><td>Provide a completed draft copy of the Interconnection Security Agreement (ISA) or Information Exchange Agreement (IEA) to the GO.gov team to review. Address comments,</td><td>Sign the Interconnection/Information Exchange Agreement. CEM Pro-Tip: This is a legal binding agreement for data flow. If this isn't signed, the agency cannot legally connect to the GO.gov environment.</td><td>"This agreement protects both your agency and GSA by explicitly defining how our systems talk to each other. It’s a required step to open the data flow."</td></tr>
+                            <tr><td><strong>1.8.8.1</strong></td><td>Complete and sign Interconnection Security Agreement (ISA) or Information Exchange Agreement (IEA) addressing customer connectivity to GO.gov</td><td>Execute the final binding security agreement governing secure technical data exchange between agency infrastructure and GO.gov</td><td>-</td></tr>
+                            <tr><td><strong>1.8.9</strong></td><td>Provide a signed copy of agency's CRM ATO / ATU letter for implementation of GO.gov to the GO.gov team</td><td>Provide final agency ATO/ATU letter. CEM Pro-Tip: They cannot load production data without this. If they are lagging, highlight the risk to their go-live date.</td><td>"Your leadership needs to formally authorize the use of GO.gov, confirming your side of the security controls are in place."</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -486,56 +480,51 @@ Client Talking Point: "Your leadership needs to formally authorize the use of GO
                     <table class="phase-table">
                         <thead>
                             <tr>
-                                <th style="width: 15%;">Task ID</th>
-                                <th style="width: 35%;">Task Name</th>
-                                <th style="width: 50%;">Description</th>
+                                <th style="width: 12%;">Task ID</th>
+                                <th style="width: 25%;">Task Name</th>
+                                <th style="width: 35%;">Description</th>
+                                <th style="width: 28%;">Client Talking Point</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td><strong>2.1</strong></td><td>Transition Execution Kick-off</td><td>Formally launch the implementation phase with managed service partners through orientation walks and plan reviews</td></tr>
-                            <tr><td><strong>2.1.1</strong></td><td>Complete kickoff / orientation meeting with MSP (i.e., configuration walkthrough)</td><td>Participate in initial system configuration briefings with the Managed Service Provider to review baseline platform behavior</td></tr>
-                            <tr><td><strong>2.1.3</strong></td><td>Review Agency Transition Plan (AT-3) with GO.gov team ahead of GSA accepting for agencies</td><td>Validate the comprehensive AT-3 document with federal program leads prior to official baseline acceptance</td></tr>
-                            <tr><td><strong>2.2</strong></td><td>Agency Configuration</td><td>Populate baseline parameter workbooks to tailor the system architecture to agency-specific operational rules</td></tr>
-                            <tr><td><strong>2.2.1</strong></td><td>Review GO.gov configuration guides and solution documentation, and make agency selections in the configuration workbook (incorporate TMC as needed)</td><td>Translate administrative and travel policies into system settings using the master configuration template</td></tr>
-                            <tr><td><strong>2.3.1</strong></td><td>FM Integration Build</td><td>Develop, program, and validate the custom data connectors linking agency financial systems to GO.gov</td></tr>
-                            <tr><td><strong>2.3.1.2</strong></td><td>Select minimal FM integration configurations and share with GSA (LOAs, workflow items, funds validation)</td><td>Define core financial data parameters—such as Line of Accounting (LOA) structures and routing rules—for initial build validation</td></tr>
-                            <tr><td><strong>2.3.1.3</strong></td><td>Develop agency FM interface to GO.gov</td><td>Write and deploy the software code or script required to successfully transfer financial transactions into the GO.gov ecosystem</td></tr>
-                            <tr><td><strong>2.4</strong></td><td>Pre-Testing Readiness and Validation</td><td>Complete technical prerequisites, including network whitelisting, data scrubbing, and identity provider configuration, ahead of formal testing</td></tr>
-                            <tr><td><strong>2.4.1</strong></td><td>Identify SIT and UAT testers and provide list to GO.gov</td><td>CEM Pro-Tip: The Rule of 5. You need 1 Lead (the single source of truth for defects) and 4 Support. Testers cannot be swapped once SIT/UAT starts.
-Client Talking Point: "We need a consistent team. Swapping testers mid-stream ruins your data results. The Lead will be my primary contact for resolving your critical bugs."</td></tr>
-                            <tr><td><strong>2.4.2</strong></td><td>Complete the FM system integration development (FM build)</td><td>Finish core coding and internal sanity checks for the financial management interface package</td></tr>
-                            <tr><td><strong>2.4.3</strong></td><td>Provide test data in GO.gov specified file formats based on agency configuration workbook selections (to include test employee, LOA, and organizational structure data. Also</td><td>Upload structured mock data sets representing agency personnel hierarchies, financial codes, and organizational structures for sandbox validation</td></tr>
-                            <tr><td><strong>2.4.4</strong></td><td>Respond to GO.gov questions / corrections required to test data as needed based on GO.gov team review (Note: This may be an optional step)</td><td>Cleanse and update mock upload files based on structural feedback from the integration engineering team</td></tr>
-                            <tr><td><strong>2.4.5</strong></td><td>Complete advanced role assignment workbook via self service portal (ServiceNow) - after completing the data workbooks in 2.4.3</td><td>Map administrative privileges and user security roles using the ServiceNow ticketing portal</td></tr>
-                            <tr><td><strong>2.4.7</strong></td><td>Develop additional test cases for critical agency functions that will apply to both SIT and UAT and share with GO.gov team</td><td>Formulate custom testing scenarios covering unique agency business rules that fall outside standard template scripts</td></tr>
-                            <tr><td><strong>2.4.8</strong></td><td>Respond and complete Pre-SIT connectivity survey provided by GO.gov team. (See transition kick off materials for more information)</td><td> Submit firewall/IP info.
-CEM Pro-Tip: This is the #1 place for "user error." If they get a submission error on the portal, tell them to clear their browser cache and try again before submitting a ticket.
-Client Talking Point: "Your network security needs to recognize GO.gov as a safe destination. This step ensures your users don't get blocked by your own firewall when they try to log in."
-</td></tr>
-                            <tr><td><strong>2.4.9</strong></td><td>Provide IP address to GO.gov team to configure whitelisting</td><td>Transmit specific agency server network ranges to enable secure inbound and outbound traffic filtering</td></tr>
-                            <tr><td><strong>2.4.10</strong></td><td>Confirm GO.gov URL whitelisting is completed</td><td>Verify that internal network administrators have unblocked GO.gov endpoints across enterprise firewalls</td></tr>
-                            <tr><td><strong>2.4.11</strong></td><td>Exchange certificates (both inbound and outbound) for FM interface connectivity with GO.gov team, ensuring that the both are PKI compliant</td><td>Securely transmit Public Key Infrastructure (PKI) digital certificates to establish encrypted transport trust</td></tr>
-                            <tr><td><strong>2.4.12</strong></td><td>Complete the Pre-SIT Identity Provider (IdP) survey provided by GO.gov team, ensuring that your IdP/SSO is SAML or OIDC 2.0 compliant</td><td>Document single sign-on federation parameters, confirming compatibility with secure open-standard authentication protocols</td></tr>
-                            <tr><td><strong>2.4.13</strong></td><td>Agency meets with GO.gov team to test IdP setup and connection with GO.gov</td><td>Execute live handshake testing between agency identity servers and the GO.gov login environment</td></tr>
-                            <tr><td><strong>2.4.14</strong></td><td>Agency successfully establish GO.gov SFTP connectivity for testing data loads with GO.gov team</td><td>Verify stable secure file transfer operations between agency nodes and test drop directories</td></tr>
-                            <tr><td><strong>2.4.15</strong></td><td>Agency successfully establish GO.gov SFTP or API connectivity for FM integration with GO.gov team</td><td>Validate end-to-end automated data conduit health for financial system transactions</td></tr>
-                            <tr><td><strong>2.4.16</strong></td><td>Pre-SIT FM connectivity testing and validation successfully complete</td><td>Formally sign off on network reachability, certificate trust, and structural handshake protocols before official script execution</td></tr>
-                            <tr><td><strong>2.4.17</strong></td><td>Participate in SIT orientation part one to review the data load template, test script list and details on SFTP process</td><td>Attend technical briefing sessions outlining test execution cadence, bug reporting, and data verification standards</td></tr>
-                            <tr><td><strong>2.5</strong></td><td>SIT - FM Integration Testing</td><td>Execute structured end-to-end technical test scripts and resolve software or data mapping defects</td></tr>
-                            <tr><td><strong>2.5.2</strong></td><td>Complete system integration testing (SIT), including defect resolution</td><td>Run all technical integration scripts, log interface errors, and clear bugs to ensure data flows cleanly</td></tr>
-                            <tr><td><strong>2.6</strong></td><td>UAT - FM Integration Testing</td><td>Validate business process execution through end-user functional testing and defect remediation</td></tr>
-                            <tr><td><strong>2.6.0</strong></td><td>Optionally: Identify UAT testers and provide list to GO.gov</td><td>Designate supplementary business-side evaluators to review software workflows from an end-user perspective</td></tr>
-                            <tr><td><strong>2.6.1</strong></td><td>Complete user acceptance testing (UAT), including defect resolution</td><td>Finish operational workflow validation with real users and address remaining functional snags</td></tr>
-                            <tr><td><strong>2.7</strong></td><td>SmartPay Integration</td><td>Establish banking feeds, update employee identifiers, and procure Centrally Billed Account (CBA) cards</td></tr>
-                            <tr><td><strong>2.7.1</strong></td><td>Discuss SmartPay integration with GO.gov team and transition team members</td><td>Coordinate credit card data feeds and transaction posting rules with bank representatives</td></tr>
-                            <tr><td><strong>2.7.5</strong></td><td>Update employee ID with SmartPay bank to ensure all card accounts are assigned the GO.gov unique employee number</td><td>Synchronize legacy bank profile numbers with GO.gov's universal user identification standard</td></tr>
-                            <tr><td><strong>2.7.10</strong></td><td>Request (and receive) new CBA credit card accounts</td><td>Procure, activate, and distribute new centrally billed corporate cards required for operational travel expense processing</td></tr>
-                            <tr><td><strong>2.7.11</strong></td><td>Initiate data feed(s) for go-live</td><td>Turn on automated daily financial transaction and authorization feeds from the banking partner</td></tr>
-                            <tr><td><strong>2.8</strong></td><td>Reporting</td><td>Build custom analytical reports and establish a strategy for historical reporting data migration</td></tr>
-                            <tr><td><strong>2.8.3</strong></td><td>Provide requirements for the [up to 5] unique reports that would be created for the agency prior to Go-Live if there are requirements beyond the standard reports</td><td>Submit requests (Cap: 5 reports).
-CEM Pro-Tip: They get 5 reports total. Before they ask for a new one, make them search the existing catalog. If they waste their 5 slots on duplicates, it costs them $900/year to add more.
-Client Talking Point: "Before you request a custom report, let's check the catalog. We might already have something that meets your need, saving you a slot and getting you data faster."</td></tr>
-                            <tr><td><strong>2.8.4</strong></td><td>Set a plan for transitioning reporting from ETS2 to GO.gov (reschedule reports on new platform)</td><td>Map out the inventory of legacy reports and reconstruct recurring distribution schedules in the new portal</td></tr>
+                            <tr><td><strong>2.1</strong></td><td>Transition Execution Kick-off</td><td>Formally launch the implementation phase with managed service partners through orientation walks and plan reviews</td><td>-</td></tr>
+                            <tr><td><strong>2.1.1</strong></td><td>Complete kickoff / orientation meeting with MSP (i.e., configuration walkthrough)</td><td>Participate in initial system configuration briefings with the Managed Service Provider to review baseline platform behavior</td><td>-</td></tr>
+                            <tr><td><strong>2.1.3</strong></td><td>Review Agency Transition Plan (AT-3) with GO.gov team ahead of GSA accepting for agencies</td><td>Validate the comprehensive AT-3 document with federal program leads prior to official baseline acceptance</td><td>-</td></tr>
+                            <tr><td><strong>2.2</strong></td><td>Agency Configuration</td><td>Populate baseline parameter workbooks to tailor the system architecture to agency-specific operational rules</td><td>-</td></tr>
+                            <tr><td><strong>2.2.1</strong></td><td>Review GO.gov configuration guides and solution documentation, and make agency selections in the configuration workbook (incorporate TMC as needed)</td><td>Translate administrative and travel policies into system settings using the master configuration template</td><td>-</td></tr>
+                            <tr><td><strong>2.3.1</strong></td><td>FM Integration Build</td><td>Develop, program, and validate the custom data connectors linking agency financial systems to GO.gov</td><td>-</td></tr>
+                            <tr><td><strong>2.3.1.2</strong></td><td>Select minimal FM integration configurations and share with GSA (LOAs, workflow items, funds validation)</td><td>Define core financial data parameters—such as Line of Accounting (LOA) structures and routing rules—for initial build validation</td><td>-</td></tr>
+                            <tr><td><strong>2.3.1.3</strong></td><td>Develop agency FM interface to GO.gov</td><td>Write and deploy the software code or script required to successfully transfer financial transactions into the GO.gov ecosystem</td><td>-</td></tr>
+                            <tr><td><strong>2.4</strong></td><td>Pre-Testing Readiness and Validation</td><td>Complete technical prerequisites, including network whitelisting, data scrubbing, and identity provider configuration, ahead of formal testing</td><td>-</td></tr>
+                            <tr><td><strong>2.4.1</strong></td><td>Identify SIT and UAT testers and provide list to GO.gov</td><td>CEM Pro-Tip: The Rule of 5. You need 1 Lead (the single source of truth for defects) and 4 Support. Testers cannot be swapped once SIT/UAT starts.</td><td>"We need a consistent team. Swapping testers mid-stream ruins your data results. The Lead will be my primary contact for resolving your critical bugs."</td></tr>
+                            <tr><td><strong>2.4.2</strong></td><td>Complete the FM system integration development (FM build)</td><td>Finish core coding and internal sanity checks for the financial management interface package</td><td>-</td></tr>
+                            <tr><td><strong>2.4.3</strong></td><td>Provide test data in GO.gov specified file formats based on agency configuration workbook selections (to include test employee, LOA, and organizational structure data...)</td><td>Upload structured mock data sets representing agency personnel hierarchies, financial codes, and organizational structures for sandbox validation</td><td>-</td></tr>
+                            <tr><td><strong>2.4.4</strong></td><td>Respond to GO.gov questions / corrections required to test data as needed based on GO.gov team review (Note: This may be an optional step)</td><td>Cleanse and update mock upload files based on structural feedback from the integration engineering team</td><td>-</td></tr>
+                            <tr><td><strong>2.4.5</strong></td><td>Complete advanced role assignment workbook via self service portal (ServiceNow) - after completing the data workbooks in 2.4.3</td><td>Map administrative privileges and user security roles using the ServiceNow ticketing portal</td><td>-</td></tr>
+                            <tr><td><strong>2.4.7</strong></td><td>Develop additional test cases for critical agency functions that will apply to both SIT and UAT and share with GO.gov team</td><td>Formulate custom testing scenarios covering unique agency business rules that fall outside standard template scripts</td><td>-</td></tr>
+                            <tr><td><strong>2.4.8</strong></td><td>Respond and complete Pre-SIT connectivity survey provided by GO.gov team. (See transition kick off materials for more information)</td><td>Submit firewall/IP info. CEM Pro-Tip: This is the #1 place for "user error." If they get a submission error on the portal, tell them to clear their browser cache and try again before submitting a ticket.</td><td>"Your network security needs to recognize GO.gov as a safe destination. This step ensures your users don't get blocked by your own firewall when they try to log in."</td></tr>
+                            <tr><td><strong>2.4.9</strong></td><td>Provide IP address to GO.gov team to configure whitelisting</td><td>Transmit specific agency server network ranges to enable secure inbound and outbound traffic filtering</td><td>-</td></tr>
+                            <tr><td><strong>2.4.10</strong></td><td>Confirm GO.gov URL whitelisting is completed</td><td>Verify that internal network administrators have unblocked GO.gov endpoints across enterprise firewalls</td><td>-</td></tr>
+                            <tr><td><strong>2.4.11</strong></td><td>Exchange certificates (both inbound and outbound) for FM interface connectivity with GO.gov team, ensuring that the both are PKI compliant</td><td>Securely transmit Public Key Infrastructure (PKI) digital certificates to establish encrypted transport trust</td><td>-</td></tr>
+                            <tr><td><strong>2.4.12</strong></td><td>Complete the Pre-SIT Identity Provider (IdP) survey provided by GO.gov team, ensuring that your IdP/SSO is SAML or OIDC 2.0 compliant</td><td>Document single sign-on federation parameters, confirming compatibility with secure open-standard authentication protocols</td><td>-</td></tr>
+                            <tr><td><strong>2.4.13</strong></td><td>Agency meets with GO.gov team to test IdP setup and connection with GO.gov</td><td>Execute live handshake testing between agency identity servers and the GO.gov login environment</td><td>-</td></tr>
+                            <tr><td><strong>2.4.14</strong></td><td>Agency successfully establish GO.gov SFTP connectivity for testing data loads with GO.gov team</td><td>Verify stable secure file transfer operations between agency nodes and test drop directories</td><td>-</td></tr>
+                            <tr><td><strong>2.4.15</strong></td><td>Agency successfully establish GO.gov SFTP or API connectivity for FM integration with GO.gov team</td><td>Validate end-to-end automated data conduit health for financial system transactions</td><td>-</td></tr>
+                            <tr><td><strong>2.4.16</strong></td><td>Pre-SIT FM connectivity testing and validation successfully complete</td><td>Formally sign off on network reachability, certificate trust, and structural handshake protocols before official script execution</td><td>-</td></tr>
+                            <tr><td><strong>2.4.17</strong></td><td>Participate in SIT orientation part one to review the data load template, test script list and details on SFTP process</td><td>Attend technical briefing sessions outlining test execution cadence, bug reporting, and data verification standards</td><td>-</td></tr>
+                            <tr><td><strong>2.5</strong></td><td>SIT - FM Integration Testing</td><td>Execute structured end-to-end technical test scripts and resolve software or data mapping defects</td><td>-</td></tr>
+                            <tr><td><strong>2.5.2</strong></td><td>Complete system integration testing (SIT), including defect resolution</td><td>Run all technical integration scripts, log interface errors, and clear bugs to ensure data flows cleanly</td><td>-</td></tr>
+                            <tr><td><strong>2.6</strong></td><td>UAT - FM Integration Testing</td><td>Validate business process execution through end-user functional testing and defect remediation</td><td>-</td></tr>
+                            <tr><td><strong>2.6.0</strong></td><td>Optionally: Identify UAT testers and provide list to GO.gov</td><td>Designate supplementary business-side evaluators to review software workflows from an end-user perspective</td><td>-</td></tr>
+                            <tr><td><strong>2.6.1</strong></td><td>Complete user acceptance testing (UAT), including defect resolution</td><td>Finish operational workflow validation with real users and address remaining functional snags</td><td>-</td></tr>
+                            <tr><td><strong>2.7</strong></td><td>SmartPay Integration</td><td>Establish banking feeds, update employee identifiers, and procure Centrally Billed Account (CBA) cards</td><td>-</td></tr>
+                            <tr><td><strong>2.7.1</strong></td><td>Discuss SmartPay integration with GO.gov team and transition team members</td><td>Coordinate credit card data feeds and transaction posting rules with bank representatives</td><td>-</td></tr>
+                            <tr><td><strong>2.7.5</strong></td><td>Update employee ID with SmartPay bank to ensure all card accounts are assigned the GO.gov unique employee number</td><td>Synchronize legacy bank profile numbers with GO.gov's universal user identification standard</td><td>-</td></tr>
+                            <tr><td><strong>2.7.10</strong></td><td>Request (and receive) new CBA credit card accounts</td><td>Procure, activate, and distribute new centrally billed corporate cards required for operational travel expense processing</td><td>-</td></tr>
+                            <tr><td><strong>2.7.11</strong></td><td>Initiate data feed(s) for go-live</td><td>Turn on automated daily financial transaction and authorization feeds from the banking partner</td><td>-</td></tr>
+                            <tr><td><strong>2.8</strong></td><td>Reporting</td><td>Build custom analytical reports and establish a strategy for historical reporting data migration</td><td>-</td></tr>
+                            <tr><td><strong>2.8.3</strong></td><td>Provide requirements for the [up to 5] unique reports that would be created for the agency prior to Go-Live if there are requirements beyond the standard reports</td><td>Submit requests (Cap: 5 reports). CEM Pro-Tip: They get 5 reports total. Before they ask for a new one, make them search the existing catalog. If they waste their 5 slots on duplicates, it costs them $900/year to add more.</td><td>"Before you request a custom report, let's check the catalog. We might already have something that meets your need, saving you a slot and getting you data faster."</td></tr>
+                            <tr><td><strong>2.8.4</strong></td><td>Set a plan for transitioning reporting from ETS2 to GO.gov (reschedule reports on new platform)</td><td>Map out the inventory of legacy reports and reconstruct recurring distribution schedules in the new portal</td><td>-</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -548,38 +537,33 @@ Client Talking Point: "Before you request a custom report, let's check the catal
                     <table class="phase-table">
                         <thead>
                             <tr>
-                                <th style="width: 15%;">Task ID</th>
-                                <th style="width: 35%;">Task Name</th>
-                                <th style="width: 50%;">Description</th>
+                                <th style="width: 12%;">Task ID</th>
+                                <th style="width: 25%;">Task Name</th>
+                                <th style="width: 35%;">Description</th>
+                                <th style="width: 28%;">Client Talking Point</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td><strong>3.1</strong></td><td>Change Management & Training</td><td>Execute communications and training.
-CEM Pro-Tip: Track their "Change Champions." If the agency doesn't have internal peer-advisors, your Tier 1 help desk will be overwhelmed post-launch.
-Client Talking Point: "Training isn't just a webinar; it’s about having 'super-users' within your own departments who can answer 'how-to' questions so your help desk doesn't get flooded on Day 1."
-</td></tr>
-                            <tr><td><strong>3.1.2</strong></td><td>Develop / finalize agency training rollout plan and begin executing where possible ahead of go-live</td><td>Finalize the instructional schedule, webinar calendar, and curriculum delivery timelines</td></tr>
-                            <tr><td><strong>3.1.5</strong></td><td>Agency to ID their Trainers & Provide to GO.gov team (if applicable for your agency)</td><td>Select internal instructors who will lead agency-specific training sessions and register them with support leads</td></tr>
-                            <tr><td><strong>3.1.7</strong></td><td>Submit initial agency service desk knowledge base content to GO.gov team</td><td>Provide internal standard operating procedures, policy manuals, and troubleshooting tips to populate help desk repositories</td></tr>
-                            <tr><td><strong>3.1.9</strong></td><td>Conduct user training optionally including agency-specific trainings (if applicable for your agency)</td><td>Deliver system navigation courses and specialized policy training to the broader employee base</td></tr>
-                            <tr><td><strong>3.1.10</strong></td><td>Send go-live and post go-live communications</td><td>Broadcast timely deployment announcements, system availability windows, and support contact details across the organization</td></tr>
-                            <tr><td><strong>3.2</strong></td><td>TMC Onboarding</td><td>Finalize travel agency configurations, ticketing profiles, and fulfillment connections</td></tr>
-                            <tr><td><strong>3.2.5</strong></td><td>TMC Setup Complete</td><td>Verify that the Travel Management Company backend is fully integrated, profile feeds are active, and agent ticketing queues are operational</td></tr>
-                            <tr><td><strong>3.3</strong></td><td>Go-Live Activities</td><td>Complete final production data loads, execute system smoke tests, and transition live user traffic</td></tr>
-                            <tr><td><strong>3.3.2</strong></td><td>Complete and submit the Production Connectivity Form and Production IdP Onboarding Survey provided by GO.gov</td><td>Certify production-level network pathways and single sign-on parameters for live release</td></tr>
-                            <tr><td><strong>3.3.3</strong></td><td>Extract agency employee profile master data from agency's FM or HR system ahead of bulk upload to GO.gov</td><td>Pull fresh, clean personnel master files from human resources or core financial systems</td></tr>
-                            <tr><td><strong>3.3.4</strong></td><td>Work with GO.gov team to prepare and provide production data workbooks / import file for bulk upload (Profile, LOA, Cost Object Approvers, Role Assignment) via SFTP</td><td>Format and validate massive master record sets for secure production injection</td></tr>
-                            <tr><td><strong>3.3.5</strong></td><td>Agency successfully establish GO.gov SFTP connectivity for production data loads with GO.gov team</td><td>Open and verify the live production transfer conduit for bulk staging files</td></tr>
-                            <tr><td><strong>3.3.6</strong></td><td>Execute agency FM Integration interface to load production data to GO.gov</td><td>Trigger the live financial interface pipeline to seed baseline accounting structures into production</td></tr>
-                            <tr><td><strong>3.3.7</strong></td><td>Conduct and complete any delta data load of production workbooks as needed</td><td>Process incremental updates to capture personnel changes occurring between initial staging and cutover</td></tr>
-                            <tr><td><strong>3.3.8</strong></td><td>Confirm GO.gov URL whitelisting is completed for production</td><td>Double-check that all production network URLs are universally accessible across agency workstations</td></tr>
-                            <tr><td><strong>3.3.9</strong></td><td>Work with GO.gov team to enable SSO integration for GO.gov production environment</td><td>Flip the switch on federated single sign-on authentication for all live agency users</td></tr>
-                            <tr><td><strong>3.3.10</strong></td><td>Work with GO.gov team to load data needed for and complete agency smoke testing of CPP fare for TMC ahead of go-live</td><td>Validate Centralized Pass-Through Program (CPP) airline rates and ticketing flows with the TMC in production</td></tr>
-                            <tr><td><strong>3.3.11</strong></td><td>Work with GO.gov team to complete agency smoke testing of expense integration ahead of go-live</td><td>End-to-end transaction test.
-CEM Pro-Tip: Never let them go live without a successful "smoke test" (a real transaction from start to finish). If they skip this, they will have failed expenses on day one.
-Client Talking Point: "We're going to push one real transaction through the entire system. It proves that the accounting, the approval, and the bank interface are actually working together."
-</td></tr>
-                            <tr><td><strong>3.3.12</strong></td><td>Production setup complete (PRR)</td><td>Pass the formal Production Readiness Review (PRR), confirming the agency is clear for official operational cutover</td></tr>
+                            <tr><td><strong>3.1</strong></td><td>Change Management & Training</td><td>Execute communications and training. CEM Pro-Tip: Track their "Change Champions." If the agency doesn't have internal peer-advisors, your Tier 1 help desk will be overwhelmed post-launch.</td><td>"Training isn't just a webinar; it’s about having 'super-users' within your own departments who can answer 'how-to' questions so your help desk doesn't get flooded on Day 1."</td></tr>
+                            <tr><td><strong>3.1.2</strong></td><td>Develop / finalize agency training rollout plan and begin executing where possible ahead of go-live</td><td>Finalize the instructional schedule, webinar calendar, and curriculum delivery timelines</td><td>-</td></tr>
+                            <tr><td><strong>3.1.5</strong></td><td>Agency to ID their Trainers & Provide to GO.gov team (if applicable for your agency)</td><td>Select internal instructors who will lead agency-specific training sessions and register them with support leads</td><td>-</td></tr>
+                            <tr><td><strong>3.1.7</strong></td><td>Submit initial agency service desk knowledge base content to GO.gov team</td><td>Provide internal standard operating procedures, policy manuals, and troubleshooting tips to populate help desk repositories</td><td>-</td></tr>
+                            <tr><td><strong>3.1.9</strong></td><td>Conduct user training optionally including agency-specific trainings (if applicable for your agency)</td><td>Deliver system navigation courses and specialized policy training to the broader employee base</td><td>-</td></tr>
+                            <tr><td><strong>3.1.10</strong></td><td>Send go-live and post go-live communications</td><td>Broadcast timely deployment announcements, system availability windows, and support contact details across the organization</td><td>-</td></tr>
+                            <tr><td><strong>3.2</strong></td><td>TMC Onboarding</td><td>Finalize travel agency configurations, ticketing profiles, and fulfillment connections</td><td>-</td></tr>
+                            <tr><td><strong>3.2.5</strong></td><td>TMC Setup Complete</td><td>Verify that the Travel Management Company backend is fully integrated, profile feeds are active, and agent ticketing queues are operational</td><td>-</td></tr>
+                            <tr><td><strong>3.3</strong></td><td>Go-Live Activities</td><td>Complete final production data loads, execute system smoke tests, and transition live user traffic</td><td>-</td></tr>
+                            <tr><td><strong>3.3.2</strong></td><td>Complete and submit the Production Connectivity Form and Production IdP Onboarding Survey provided by GO.gov</td><td>Certify production-level network pathways and single sign-on parameters for live release</td><td>-</td></tr>
+                            <tr><td><strong>3.3.3</strong></td><td>Extract agency employee profile master data from agency's FM or HR system ahead of bulk upload to GO.gov</td><td>Pull fresh, clean personnel master files from human resources or core financial systems</td><td>-</td></tr>
+                            <tr><td><strong>3.3.4</strong></td><td>Work with GO.gov team to prepare and provide production data workbooks / import file for bulk upload... via SFTP</td><td>Format and validate massive master record sets for secure production injection</td><td>-</td></tr>
+                            <tr><td><strong>3.3.5</strong></td><td>Agency successfully establish GO.gov SFTP connectivity for production data loads with GO.gov team</td><td>Open and verify the live production transfer conduit for bulk staging files</td><td>-</td></tr>
+                            <tr><td><strong>3.3.6</strong></td><td>Execute agency FM Integration interface to load production data to GO.gov</td><td>Trigger the live financial interface pipeline to seed baseline accounting structures into production</td><td>-</td></tr>
+                            <tr><td><strong>3.3.7</strong></td><td>Conduct and complete any delta data load of production workbooks as needed</td><td>Process incremental updates to capture personnel changes occurring between initial staging and cutover</td><td>-</td></tr>
+                            <tr><td><strong>3.3.8</strong></td><td>Confirm GO.gov URL whitelisting is completed for production</td><td>Double-check that all production network URLs are universally accessible across agency workstations</td><td>-</td></tr>
+                            <tr><td><strong>3.3.9</strong></td><td>Work with GO.gov team to enable SSO integration for GO.gov production environment</td><td>Flip the switch on federated single sign-on authentication for all live agency users</td><td>-</td></tr>
+                            <tr><td><strong>3.3.10</strong></td><td>Work with GO.gov team to load data needed for and complete agency smoke testing of CPP fare for TMC ahead of go-live</td><td>Validate Centralized Pass-Through Program (CPP) airline rates and ticketing flows with the TMC in production</td><td>-</td></tr>
+                            <tr><td><strong>3.3.11</strong></td><td>Work with GO.gov team to complete agency smoke testing of expense integration ahead of go-live</td><td>End-to-end transaction test. CEM Pro-Tip: Never let them go live without a successful "smoke test" (a real transaction from start to finish). If they skip this, they will have failed expenses on day one.</td><td>"We're going to push one real transaction through the entire system. It proves that the accounting, the approval, and the bank interface are actually working together."</td></tr>
+                            <tr><td><strong>3.3.12</strong></td><td>Production setup complete (PRR)</td><td>Pass the formal Production Readiness Review (PRR), confirming the agency is clear for official operational cutover</td><td>-</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -592,24 +576,25 @@ Client Talking Point: "We're going to push one real transaction through the enti
                     <table class="phase-table">
                         <thead>
                             <tr>
-                                <th style="width: 15%;">Task ID</th>
-                                <th style="width: 35%;">Task Name</th>
-                                <th style="width: 50%;">Description</th>
+                                <th style="width: 12%;">Task ID</th>
+                                <th style="width: 25%;">Task Name</th>
+                                <th style="width: 35%;">Description</th>
+                                <th style="width: 28%;">Client Talking Point</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td><strong>4.1</strong></td><td>ETS Close-Out Activities</td><td>Oversee legacy system decommissioning, data archiving, and final contract reconciliation with the outgoing vendor</td></tr>
-                            <tr><td><strong>4.1.1</strong></td><td>Request for the ETS2 vendor to provide a transition out plan (target 6 months prior to Go-Live)</td><td>Formally request the legacy provider's wind-down timeline and archival data extraction protocol</td></tr>
-                            <tr><td><strong>4.1.2</strong></td><td>Discuss and finalize data transition out checklist from ETS2 vendor</td><td>Agree upon exact file formats, data retention boundaries, and delivery schedules for historical records</td></tr>
-                            <tr><td><strong>4.1.7</strong></td><td>Capture final archive and communicate receipt to GSA CO</td><td>Secure immutable backups of historical travel records and confirm safe delivery to the GSA Contracting Officer</td></tr>
-                            <tr><td><strong>4.2</strong></td><td>ETS2 TMC Close-Out</td><td>Reconcile final travel agency billings, settle open credits, and resolve remaining transaction disputes</td></tr>
-                            <tr><td><strong>4.2.3</strong></td><td>Confirm the outgoing TMC vendor reconciled each account balance and settled each transaction dispute within 180 calendar days of the completed agency or organization</td><td>Resolve billing disputes.
-CEM Pro-Tip: This is financial, not technical. If they don't reconcile with the old TMC (Travel Management Company), they leave open liabilities that haunt them 180 days post-go-live.
-Client Talking Point: "We need to make sure your final bills with the old system are closed out. If we don't fix those discrepancies now, they’ll show up as red flags in your final audit."</td></tr>
+                            <tr><td><strong>4.1</strong></td><td>ETS Close-Out Activities</td><td>Oversee legacy system decommissioning, data archiving, and final contract reconciliation with the outgoing vendor</td><td>-</td></tr>
+                            <tr><td><strong>4.1.1</strong></td><td>Request for the ETS2 vendor to provide a transition out plan (target 6 months prior to Go-Live)</td><td>Formally request the legacy provider's wind-down timeline and archival data extraction protocol</td><td>-</td></tr>
+                            <tr><td><strong>4.1.2</strong></td><td>Discuss and finalize data transition out checklist from ETS2 vendor</td><td>Agree upon exact file formats, data retention boundaries, and delivery schedules for historical records</td><td>-</td></tr>
+                            <tr><td><strong>4.1.7</strong></td><td>Capture final archive and communicate receipt to GSA CO</td><td>Secure immutable backups of historical travel records and confirm safe delivery to the GSA Contracting Officer</td><td>-</td></tr>
+                            <tr><td><strong>4.2</strong></td><td>ETS2 TMC Close-Out</td><td>Reconcile final travel agency billings, settle open credits, and resolve remaining transaction disputes</td><td>-</td></tr>
+                            <tr><td><strong>4.2.3</strong></td><td>Confirm the outgoing TMC vendor reconciled each account balance and settled each transaction dispute within 180 calendar days of the completed agency or organization</td><td>Resolve billing disputes. CEM Pro-Tip: This is financial, not technical. If they don't reconcile with the old TMC, they leave open liabilities that haunt them 180 days post-go-live.</td><td>"We need to make sure your final bills with the old system are closed out. If we don't fix those discrepancies now, they’ll show up as red flags in your final audit."</td></tr>
                         </tbody>
                     </table>
                 </div>
             </div>
+        </div>
+    </div>
 
     <div id="AcronymTab" class="tab-content">
         <div class="sub-nav">
@@ -1391,37 +1376,13 @@ Client Talking Point: "We need to make sure your final bills with the old system
                 <tr>
                     <td><strong>USHMM</strong></td>
                     <td>US Holocaust Memorial Museum</td>
-                    <td><ul class="component-list"><li>Documentation, study, and interpretation of Holocaust history.</li></ul></td>
-                </tr>
-                <tr>
-                    <td><strong>USIP</strong></td>
-                    <td>US Institute of Peace</td>
-                    <td><ul class="component-list"><li>Nonpartisan institute dedicated to preventing and resolving violent international conflicts.</li></ul></td>
-                </tr>
-                <tr>
-                    <td><strong>USITC</strong></td>
-                    <td>US International Trade Commission</td>
-                    <td><ul class="component-list"><li>Analysis of international trade issues and enforcement against unfair trade practices.</li></ul></td>
-                </tr>
-                <tr>
-                    <td><strong>USTC</strong></td>
-                    <td>US Tax Court</td>
-                    <td><ul class="component-list"><li>Adjudication of disputes over federal income, estate, and gift taxes.</li></ul></td>
-                </tr>
-                <tr>
-                    <td><strong>USTDA</strong></td>
-                    <td>US Trade and Development Agency</td>
-                    <td><ul class="component-list"><li>Connecting businesses to infrastructure projects in developing economies.</li></ul></td>
-                </tr>
-                <tr>
-                    <td><strong>VA</strong></td>
-                    <td>Department of Veterans Affairs</td>
-                    <td><ul class="component-list"><li>Providing healthcare, benefits, and memorial services to veterans.</li></ul></td>
+                    <td><ul class="component-list"><li>Documentation, study of the Holocaust, and human rights educational resources.</li></ul></td>
                 </tr>
             </tbody>
         </table>
     </div>
 
+    <!-- Include your script block here containing openTab, switchCemSubTab, togglePhase, and filter functions -->
     <script>
         function openTab(evt, tabName) {
             var i, tabContent, navItems;
@@ -1432,11 +1393,11 @@ Client Talking Point: "We need to make sure your final bills with the old system
             }
             navItems = document.getElementsByClassName("nav-item");
             for (i = 0; i < navItems.length; i++) {
-                navItems[i].classList.remove("active");
+                navItems[i].className = navItems[i].className.replace(" active", "");
             }
             document.getElementById(tabName).style.display = "block";
             document.getElementById(tabName).classList.add("active");
-            evt.currentTarget.classList.add("active");
+            evt.currentTarget.className += " active";
         }
 
         function switchCemSubTab(evt, subTabName) {
@@ -1448,11 +1409,19 @@ Client Talking Point: "We need to make sure your final bills with the old system
             }
             subBtns = document.querySelectorAll("#GuideTab .sub-btn");
             for (i = 0; i < subBtns.length; i++) {
-                subBtns[i].classList.remove("active");
+                subBtns[i].className = subBtns[i].className.replace(" active", "");
             }
             document.getElementById(subTabName).style.display = "block";
             document.getElementById(subTabName).classList.add("active");
-            evt.currentTarget.classList.add("active");
+            evt.currentTarget.className += " active";
+
+            // If switching to the Milestone Tracker, scroll down to the task index heading
+            if (subTabName === 'cemTasksSubTab') {
+                const taskIndexElem = document.getElementById('task-index');
+                if (taskIndexElem) {
+                    taskIndexElem.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
         }
 
         function switchSubTab(evt, subTabName) {
@@ -1464,51 +1433,51 @@ Client Talking Point: "We need to make sure your final bills with the old system
             }
             subBtns = document.querySelectorAll("#AcronymTab .sub-btn");
             for (i = 0; i < subBtns.length; i++) {
-                subBtns[i].classList.remove("active");
+                subBtns[i].className = subBtns[i].className.replace(" active", "");
             }
             document.getElementById(subTabName).style.display = "block";
             document.getElementById(subTabName).classList.add("active");
-            evt.currentTarget.classList.add("active");
+            evt.currentTarget.className += " active";
         }
 
-        function togglePhase(headerElement) {
-            var section = headerElement.parentElement;
-            section.classList.toggle("collapsed");
+        function togglePhase(headerElem) {
+            const section = headerElem.parentElement;
+            section.classList.toggle('collapsed');
         }
 
         function filterTaskTables() {
-            var input, filter, sections, i, j, tr, tdId, tdName, tdDesc, matchFound;
+            var input, filter, sections, i, table, tr, td, j, txtValue;
             input = document.getElementById("taskSearchBox");
-            filter = input.value.toUpperCase();
+            filter = input.value.toLowerCase();
             sections = document.getElementsByClassName("phase-section");
 
             for (i = 0; i < sections.length; i++) {
-                var table = sections[i].getElementsByClassName("phase-table")[0];
+                table = sections[i].getElementsByClassName("phase-table")[0];
                 tr = table.getElementsByTagName("tr");
-                matchFound = false;
+                let sectionHasMatch = false;
 
                 for (j = 1; j < tr.length; j++) {
                     tdId = tr[j].getElementsByTagName("td")[0];
                     tdName = tr[j].getElementsByTagName("td")[1];
                     tdDesc = tr[j].getElementsByTagName("td")[2];
-
+                    
                     if (tdId || tdName || tdDesc) {
-                        var txtId = tdId.textContent || tdId.innerText;
-                        var txtName = tdName.textContent || tdName.innerText;
-                        var txtDesc = tdDesc.textContent || tdDesc.innerText;
+                        let idVal = tdId ? tdId.textContent || tdId.innerText : "";
+                        let nameVal = tdName ? tdName.textContent || tdName.innerText : "";
+                        let descVal = tdDesc ? tdDesc.textContent || tdDesc.innerText : "";
 
-                        if (txtId.toUpperCase().indexOf(filter) > -1 || 
-                            txtName.toUpperCase().indexOf(filter) > -1 || 
-                            txtDesc.toUpperCase().indexOf(filter) > -1) {
+                        if (idVal.toLowerCase().indexOf(filter) > -1 || 
+                            nameVal.toLowerCase().indexOf(filter) > -1 || 
+                            descVal.toLowerCase().indexOf(filter) > -1) {
                             tr[j].style.display = "";
-                            matchFound = true;
+                            sectionHasMatch = true;
                         } else {
                             tr[j].style.display = "none";
                         }
                     }
                 }
 
-                if (matchFound) {
+                if (sectionHasMatch || filter === "") {
                     sections[i].style.display = "";
                 } else {
                     sections[i].style.display = "none";
@@ -1517,50 +1486,48 @@ Client Talking Point: "We need to make sure your final bills with the old system
         }
 
         function filterAcronymTable() {
-            var input, filter, table, tr, tdAcronym, tdDef, tdDetail, i, txtValue1, txtValue2, txtValue3;
+            var input, filter, table, tr, td1, td2, td3, i;
             input = document.getElementById("acronymSearchBox");
-            filter = input.value.toUpperCase();
+            filter = input.value.toLowerCase();
             table = document.getElementById("acronymTable");
             tr = table.getElementsByTagName("tr");
 
             for (i = 1; i < tr.length; i++) {
-                tdAcronym = tr[i].getElementsByTagName("td")[0];
-                tdDef = tr[i].getElementsByTagName("td")[1];
-                tdDetail = tr[i].getElementsByTagName("td")[2];
-                if (tdAcronym || tdDef || tdDetail) {
-                    txtValue1 = tdAcronym.textContent || tdAcronym.innerText;
-                    txtValue2 = tdDef.textContent || tdDef.innerText;
-                    txtValue3 = tdDetail.textContent || tdDetail.innerText;
-                    if (txtValue1.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1 || txtValue3.toUpperCase().indexOf(filter) > -1) {
+                td1 = tr[i].getElementsByTagName("td")[0];
+                td2 = tr[i].getElementsByTagName("td")[1];
+                td3 = tr[i].getElementsByTagName("td")[2];
+                if (td1 || td2 || td3) {
+                    if (td1.textContent.toLowerCase().indexOf(filter) > -1 || 
+                        td2.textContent.toLowerCase().indexOf(filter) > -1 || 
+                        td3.textContent.toLowerCase().indexOf(filter) > -1) {
                         tr[i].style.display = "";
                     } else {
                         tr[i].style.display = "none";
                     }
-                }       
+                }
             }
         }
 
         function filterAgencyTable() {
-            var input, filter, table, tr, tdAcronym, tdName, tdDesc, i, txtValue1, txtValue2, txtValue3;
+            var input, filter, table, tr, td1, td2, td3, i;
             input = document.getElementById("agencySearchBox");
-            filter = input.value.toUpperCase();
+            filter = input.value.toLowerCase();
             table = document.getElementById("agencyTable");
             tr = table.getElementsByTagName("tr");
 
             for (i = 1; i < tr.length; i++) {
-                tdAcronym = tr[i].getElementsByTagName("td")[0];
-                tdName = tr[i].getElementsByTagName("td")[1];
-                tdDesc = tr[i].getElementsByTagName("td")[2];
-                if (tdAcronym || tdName || tdDesc) {
-                    txtValue1 = tdAcronym.textContent || tdAcronym.innerText;
-                    txtValue2 = tdName.textContent || tdName.innerText;
-                    txtValue3 = tdDesc.textContent || tdDesc.innerText;
-                    if (txtValue1.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1 || txtValue3.toUpperCase().indexOf(filter) > -1) {
+                td1 = tr[i].getElementsByTagName("td")[0];
+                td2 = tr[i].getElementsByTagName("td")[1];
+                td3 = tr[i].getElementsByTagName("td")[2];
+                if (td1 || td2 || td3) {
+                    if (td1.textContent.toLowerCase().indexOf(filter) > -1 || 
+                        td2.textContent.toLowerCase().indexOf(filter) > -1 || 
+                        td3.textContent.toLowerCase().indexOf(filter) > -1) {
                         tr[i].style.display = "";
                     } else {
                         tr[i].style.display = "none";
                     }
-                }       
+                }
             }
         }
     </script>

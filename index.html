@@ -293,6 +293,13 @@
 .journey-number{font-size:11px;font-weight:700;color:#3b82f6;letter-spacing:.08em}.journey-step strong{display:block;color:#1e3a8a;margin:5px 0;font-size:14px}.journey-step span{color:#64748b;font-size:12px;line-height:1.4}
 @media(max-width:800px){.dashboard-grid{grid-template-columns:1fr}.journey{flex-direction:column}.journey-step,.journey-step:first-child,.journey-step:last-child{border-radius:10px}}
 
+
+        /* Anchor landing spacing */
+        #cemGuideSubTab h2[id],
+        #cemTasksSubTab h2[id] {
+            scroll-margin-top: 18px;
+        }
+
 </style>
 </head>
 <body>
@@ -340,7 +347,17 @@
                 <p>Welcome to the team. As a Customer Engagement Manager (CEM), you are the critical bridge between your assigned agencies and the GSA PMO. This guide synthesizes the resources available to help you navigate your new role, master the Milestone Tracker, and locate necessary project documentation. A comprehensive onboarding playbook for Customer Engagement Managers to navigate role expectations, team structure, tracking tools, and agency transitions.</p>
             </div>
 
-           <h2>1. CEM Roles & Objectives</h2>
+            <!-- Guide Overview Topic Navigation -->
+            <div class="milestone-nav guide-nav" aria-label="Guide Overview topics">
+                <a href="#guide-roles">Roles & Objectives</a>
+                <a href="#guide-team">Team Ecosystem</a>
+                <a href="#guide-tools">Key Tools & Resources</a>
+                <a href="#guide-communication">Communication & Meetings</a>
+                <a href="#guide-documentation">Essential Documentation</a>
+                <a href="#guide-next-steps">Next Steps & Onboarding</a>
+            </div>
+
+           <h2 id="guide-roles">1. CEM Roles & Objectives</h2>
             <div class="card">
                 <p style="margin-top: 0; font-weight: 600; color: #1e3a8a;">Your primary objective is to ensure your assigned agency’s transition to the GO.gov platform is successful.</p>
                 <ul>
@@ -350,7 +367,7 @@
                 </ul>
             </div>
 
-            <h2>2. Team Ecosystem & Contracting Structure</h2>
+            <h2 id="guide-team">2. Team Ecosystem & Contracting Structure</h2>
             <div class="card">
                 <p style="margin-top: 0;">Understanding team boundaries and contractor dynamics ensures smooth operational coordination:</p>
                 <ul>
@@ -360,7 +377,7 @@
                 </ul>
             </div>
 
-            <h2>3. Key Tools & Resources</h2>
+            <h2 id="guide-tools">3. Key Tools & Resources</h2>
             <div class="card">
                 <p style="margin-top: 0;">You will utilize several specific tools and channels to manage your workflow:</p>
                 <ul>
@@ -370,7 +387,7 @@
                    
                 </ul>
             </div>
-<h2>4. Communication Channels & Meetings</h2>
+<h2 id="guide-communication">4. Communication Channels & Meetings</h2>
             <div class="card">
                 <p style="margin-top: 0;">You will utilize several specific tools and channels to manage your workflow:</p>
                 <ul>
@@ -380,7 +397,7 @@
             </div>
 
 
-            <h2>5. Essential Documentation & Reading</h2>
+            <h2 id="guide-documentation">5. Essential Documentation & Reading</h2>
             <div class="card">
                 <p style="margin-top: 0;">When you need to find official resources, Connect.gov is your single source of truth. Strongly recommended review priorities include:</p>
                 <ul>                 
@@ -388,7 +405,7 @@
                     <li><a href="https://docs.google.com/document/d/1wc25h9l7JFFOxikA9kBJ3Qjia_GVZUPiFwXC64fbDcI/edit?tab=t.0#heading=h.z3jvy6wabg8n" target="_blank">GO.gov glossary of terms</a></strong> </li>                   
                 </ul>
             </div>
-            <h2>6. Next Steps & Administrative Onboarding</h2>
+            <h2 id="guide-next-steps">6. Next Steps & Administrative Onboarding</h2>
             <div class="card">
                 <ul>
                     <li><strong>Coffee Chats:</strong> Review the "GO.gov Introduction Team Coffee Chats" tracker to schedule 30-minute introductions with teammates to discuss backgrounds, roles, and key insights.</li>
@@ -1451,7 +1468,7 @@
     </div>
 
 
-    <button id="backToTop" class="back-to-top" type="button" aria-label="Back to Milestone Tracker topics">↑ Back to Topics</button>
+    <button id="backToTop" class="back-to-top" type="button" aria-label="Back to section topics">↑ Back to Topics</button>
 
     <!-- Include your script block here containing openTab, switchCemSubTab, togglePhase, and filter functions -->
     <script>
@@ -1620,15 +1637,30 @@
             }
         }
 
-        // Show a return button after navigating down the Milestone Tracker.
+        // Show a contextual return button after navigating down Guide Overview or Milestone Tracker.
         (function () {
             var backToTop = document.getElementById("backToTop");
-            var milestoneNav = document.querySelector(".milestone-nav");
+
+            function getActiveTopicNav() {
+                var guideOverview = document.getElementById("cemGuideSubTab");
+                var milestoneTab = document.getElementById("cemTasksSubTab");
+
+                var guideActive = guideOverview &&
+                    guideOverview.style.display !== "none" &&
+                    document.getElementById("GuideTab").style.display !== "none";
+
+                var milestoneActive = milestoneTab &&
+                    milestoneTab.style.display !== "none" &&
+                    document.getElementById("GuideTab").style.display !== "none";
+
+                if (guideActive) return document.querySelector(".guide-nav");
+                if (milestoneActive) return document.querySelector("#cemTasksSubTab .milestone-nav");
+                return null;
+            }
 
             function updateBackToTop() {
-                var milestoneTab = document.getElementById("cemTasksSubTab");
-                var milestoneActive = milestoneTab && milestoneTab.style.display !== "none";
-                if (milestoneActive && window.scrollY > 250) {
+                var activeNav = getActiveTopicNav();
+                if (activeNav && window.scrollY > 250) {
                     backToTop.classList.add("show");
                 } else {
                     backToTop.classList.remove("show");
@@ -1636,8 +1668,9 @@
             }
 
             backToTop.addEventListener("click", function () {
-                if (milestoneNav) {
-                    milestoneNav.scrollIntoView({ behavior: "smooth", block: "start" });
+                var activeNav = getActiveTopicNav();
+                if (activeNav) {
+                    activeNav.scrollIntoView({ behavior: "smooth", block: "start" });
                 } else {
                     window.scrollTo({ top: 0, behavior: "smooth" });
                 }
@@ -1645,8 +1678,9 @@
 
             window.addEventListener("scroll", updateBackToTop);
             window.addEventListener("resize", updateBackToTop);
+
             document.addEventListener("click", function (event) {
-                if (event.target.closest(".milestone-nav a, #GuideTab .sub-btn")) {
+                if (event.target.closest(".milestone-nav a, .guide-nav a, #GuideTab .sub-btn, .primary-nav .nav-item, .dashboard-btn")) {
                     setTimeout(updateBackToTop, 50);
                 }
             });

@@ -280,18 +280,55 @@
         .back-to-top:hover { background: #1d4ed8; }
         .back-to-top.show { display: block; }
 
-    </style>
+    
+/* HOME DASHBOARD */
+.home-dashboard{display:none}.home-dashboard.active{display:block}
+.dashboard-hero{background:linear-gradient(135deg,#1e3a8a,#2563eb);color:#fff;border-radius:14px;padding:34px 32px;margin:18px 0 24px;box-shadow:0 8px 24px rgba(30,58,138,.18)}
+.dashboard-hero h2{color:#fff!important;border:0!important;padding:0!important;margin:0 0 10px!important;font-size:24px!important}.dashboard-hero p{color:#dbeafe;max-width:760px;margin:0;font-size:15px;line-height:1.6}
+.dashboard-section-title{margin:28px 0 12px;color:#1e3a8a;font-size:17px;font-weight:700}.dashboard-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.dashboard-card{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:20px;box-shadow:0 2px 8px rgba(15,23,42,.04)}.dashboard-icon{font-size:28px;margin-bottom:10px}
+.dashboard-card h3{color:#1e3a8a;margin:0 0 8px;font-size:16px}.dashboard-card p{margin:0 0 16px;color:#475569;line-height:1.5;font-size:14px}
+.dashboard-btn,.quick-links a{display:inline-block;background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;border-radius:7px;padding:8px 12px;font-weight:600;font-size:13px;cursor:pointer;text-decoration:none}
+.quick-links{display:flex;flex-wrap:wrap;gap:10px}.journey{display:flex;align-items:stretch}.journey-step{flex:1;background:#fff;border:1px solid #e2e8f0;padding:18px 16px}.journey-step:first-child{border-radius:10px 0 0 10px}.journey-step:last-child{border-radius:0 10px 10px 0}
+.journey-number{font-size:11px;font-weight:700;color:#3b82f6;letter-spacing:.08em}.journey-step strong{display:block;color:#1e3a8a;margin:5px 0;font-size:14px}.journey-step span{color:#64748b;font-size:12px;line-height:1.4}
+@media(max-width:800px){.dashboard-grid{grid-template-columns:1fr}.journey{flex-direction:column}.journey-step,.journey-step:first-child,.journey-step:last-child{border-radius:10px}}
+
+</style>
 </head>
 <body>
 
     <h1>CEM Training</h1>
 
     <div class="primary-nav">
-        <button class="nav-item active" onclick="openTab(event, 'GuideTab')">CEM Training Portal</button>
+        <button class="nav-item active" onclick="openTab(event, 'HomeTab')">Home</button>
+        <button class="nav-item" onclick="openTab(event, 'GuideTab')">CEM Training Portal</button>
         <button class="nav-item" onclick="openTab(event, 'AcronymTab')">Acronym & Agency Directory</button>
     </div>
 
-    <div id="GuideTab" class="tab-content guide-body active">
+    
+<div id="HomeTab" class="tab-content home-dashboard active">
+<div class="dashboard-hero"><h2>Welcome to the CEM Training Portal</h2><p>Your central hub for learning the CEM role, navigating agency transitions, managing the Milestone Tracker, and finding the resources you need to support agency success.</p></div>
+<div class="dashboard-section-title">Where would you like to start?</div>
+<div class="dashboard-grid">
+<div class="dashboard-card"><div class="dashboard-icon">🚀</div><h3>New to the CEM Role?</h3><p>Start with responsibilities, team structure, communication channels, and essential resources.</p><button class="dashboard-btn" onclick="goToGuide('cemGuideSubTab')">Start Training →</button></div>
+<div class="dashboard-card"><div class="dashboard-icon">📊</div><h3>Working in the Milestone Tracker?</h3><p>Access lifecycle guidance, tracker rules, roadblocks, status definitions, escalations, and tasks.</p><button class="dashboard-btn" onclick="goToGuide('cemTasksSubTab')">Open Tracker →</button></div>
+<div class="dashboard-card"><div class="dashboard-icon">🔎</div><h3>Need a Quick Reference?</h3><p>Find acronyms, agency information, and other reference material quickly.</p><button class="dashboard-btn" onclick="goToDirectory()">Open Directory →</button></div>
+</div>
+<div class="dashboard-section-title">Quick Access</div><div class="dashboard-card"><div class="quick-links">
+<button class="dashboard-btn" onclick="goToGuide('cemTasksSubTab')">Milestone Tracker</button>
+<a href="https://www.connect.gov/" target="_blank">Connect.gov ↗</a>
+<a href="https://docs.google.com/spreadsheets/d/1IyD8WFXjEuWmtn-LXdNI8jJFYWNDBzkhtaeFVB06Rhg/edit?gid=2059601144#gid=2059601144" target="_blank">Resource Hub ↗</a>
+<a href="https://drive.google.com/a/gsa.gov/open?id=1zKTT7Syd1ucf-ILgdy88G42R-4v_yIGNtUHwrDH2y54" target="_blank">CEM Slide Repository ↗</a>
+</div></div>
+<div class="dashboard-section-title">Your CEM Learning Journey</div><div class="journey">
+<div class="journey-step"><div class="journey-number">01 START</div><strong>Learn Your Role</strong><span>Understand responsibilities and objectives.</span></div>
+<div class="journey-step"><div class="journey-number">02 PREPARE</div><strong>Know the Team & Tools</strong><span>Learn the ecosystem and resources.</span></div>
+<div class="journey-step"><div class="journey-number">03 MANAGE</div><strong>Master the Tracker</strong><span>Track agency progress and status.</span></div>
+<div class="journey-step"><div class="journey-number">04 NAVIGATE</div><strong>Resolve Roadblocks</strong><span>Understand issues and escalation paths.</span></div>
+<div class="journey-step"><div class="journey-number">05 SUPPORT</div><strong>Guide Agency Success</strong><span>Support agencies through transition.</span></div>
+</div></div>
+
+<div id="GuideTab" class="tab-content guide-body">
         <div class="sub-nav">
             <button class="sub-btn active" onclick="switchCemSubTab(event, 'cemGuideSubTab')">Guide Overview</button>
             <button class="sub-btn" onclick="switchCemSubTab(event, 'cemTasksSubTab')">Milestone Tracker</button>
@@ -1418,7 +1455,25 @@
 
     <!-- Include your script block here containing openTab, switchCemSubTab, togglePhase, and filter functions -->
     <script>
+
+        function resetAllSearches() {
+            // Clear every search field in the portal.
+            document.querySelectorAll('input.searchBox, #searchBox').forEach(function(input) {
+                input.value = '';
+            });
+
+            // Restore all rows directly so the reset works even when a tab is hidden.
+            document.querySelectorAll('#acronymTable tbody tr, #agencyTable tbody tr, .phase-table tbody tr').forEach(function(row) {
+                row.style.display = '';
+            });
+
+            // Restore all milestone phase sections in case a search hid an entire section.
+            document.querySelectorAll('.phase-section').forEach(function(section) {
+                section.style.display = '';
+            });
+        }
         function openTab(evt, tabName) {
+            resetAllSearches();
             var i, tabContent, navItems;
             tabContent = document.getElementsByClassName("tab-content");
             for (i = 0; i < tabContent.length; i++) {
@@ -1432,9 +1487,15 @@
             document.getElementById(tabName).style.display = "block";
             document.getElementById(tabName).classList.add("active");
             evt.currentTarget.className += " active";
+
+            // Home is a full reset point for all searchable lists.
+            if (tabName === "HomeTab") {
+                resetAllSearches();
+            }
         }
 
         function switchCemSubTab(evt, subTabName) {
+            resetAllSearches();
             var i, subContent, subBtns;
             subContent = document.getElementsByClassName("cem-sub-content");
             for (i = 0; i < subContent.length; i++) {
@@ -1452,6 +1513,7 @@
         }
 
         function switchSubTab(evt, subTabName) {
+            resetAllSearches();
             var i, subContent, subBtns;
             subContent = document.getElementsByClassName("sub-tab-content");
             for (i = 0; i < subContent.length; i++) {
@@ -1590,6 +1652,29 @@
             });
         })();
 
-    </script>
+    
+function goToGuide(subTabId){
+ resetAllSearches();
+ document.querySelectorAll('.tab-content').forEach(t=>{t.style.display='none';t.classList.remove('active')});
+ const guide=document.getElementById('GuideTab');guide.style.display='block';guide.classList.add('active');
+ document.querySelectorAll('.primary-nav .nav-item').forEach(b=>b.classList.remove('active'));
+ const gb=Array.from(document.querySelectorAll('.primary-nav .nav-item')).find(b=>b.textContent.trim()==='CEM Training Portal');if(gb)gb.classList.add('active');
+ document.querySelectorAll('.cem-sub-content').forEach(c=>{c.style.display='none';c.classList.remove('active')});
+ const target=document.getElementById(subTabId);target.style.display='block';target.classList.add('active');
+ document.querySelectorAll('.sub-nav .sub-btn').forEach(b=>b.classList.remove('active'));
+ const label=subTabId==='cemGuideSubTab'?'Guide Overview':'Milestone Tracker';
+ const sb=Array.from(document.querySelectorAll('.sub-nav .sub-btn')).find(b=>b.textContent.trim()===label);if(sb)sb.classList.add('active');
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+function goToDirectory(){
+ resetAllSearches();
+ document.querySelectorAll('.tab-content').forEach(t=>{t.style.display='none';t.classList.remove('active')});
+ const d=document.getElementById('AcronymTab');if(d){d.style.display='block';d.classList.add('active')}
+ document.querySelectorAll('.primary-nav .nav-item').forEach(b=>b.classList.remove('active'));
+ const db=Array.from(document.querySelectorAll('.primary-nav .nav-item')).find(b=>b.textContent.includes('Acronym'));if(db)db.classList.add('active');
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+
+</script>
 </body>
 </html>
